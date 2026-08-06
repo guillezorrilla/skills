@@ -27,17 +27,34 @@ once — after that it behaves the same.
 npx skills@latest add guillezorrilla/skills
 ```
 
-The installer lets you pick which skills to take and which agents to install them
-on. Add `--global` for user-level instead of per-project, and `--agent '*'` to hit
-every agent at once:
+Run it bare and it walks you through it: **global or per-project**, **which skills**
+to take, and **which agents** to install them on. That interactive flow is the point
+of this route — pick what you want and nothing else.
 
-```bash
-npx skills@latest add guillezorrilla/skills --global --agent '*'
-```
+Flags exist to skip the prompts when you already know the answer:
 
-Skills are symlinked into agent directories rather than copied, so editing the
-source updates every agent. Pass `--copy` if you would rather have independent
-files. Update later with `npx skills@latest update --global`.
+| Flag | Effect |
+| --- | --- |
+| `-g, --global` | user-level instead of per-project |
+| `-p, --project` | per-project (skip the scope prompt) |
+| `-a, --agent '*'` | every agent at once, no prompt |
+| `-s, --skill <names>` | named skills only |
+| `--all` | everything, everywhere, no prompts |
+| `-l, --list` | show what's available, install nothing |
+| `--copy` | copy files instead of symlinking |
+
+Skills are symlinked into agent directories by default, so editing the source
+updates every agent at once. Update later with `npx skills@latest update --global`.
+
+### Which route?
+
+| | Claude Code plugin | `npx skills add` |
+| --- | --- | --- |
+| Scope | user-level, all projects | your choice, prompted |
+| Which skills | the whole bundle | you pick |
+| Which agents | Claude Code only | any, you pick |
+| Editable | no — managed, read-only | yes — files land in your tree |
+| Updates | automatic | `skills update` |
 
 ## 2. The skills
 
