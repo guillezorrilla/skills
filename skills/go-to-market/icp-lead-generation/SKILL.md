@@ -70,6 +70,8 @@ Checkable  10 to 60 physical locations        → their own store locator
 
 Sort them into two groups and keep the split visible. Hard filters disqualify: fail one and the account is out. Soft signals only rank, and never disqualify. A hard filter you are willing to waive is a soft signal, so move it before you start looking, not while you are staring at a company you have already fallen for.
 
+**Marketing numbers are not counts.** A brand's about page, its press releases and every aggregator will disagree with its own store locator, and they are wrong in both directions. One chain claiming a hundred plus locations turns out to have eighteen. Another that reads mid-size comes back at a hundred and nineteen and fails the band outright. Count the locator. Use a third party only to cross-check a first-party number, never as the number.
+
 ### 2. Search wide, then verify narrow
 
 Keep the two phases apart, because casting wide is cheap and being wrong is expensive.
@@ -77,6 +79,14 @@ Keep the two phases apart, because casting wide is cheap and being wrong is expe
 Gather candidates from several angles: directories, app-store categories, the language of job posts, conference exhibitor lists, competitors' customer logos, "integrates with" pages of tools your customers use. One search angle finds one slice of the market and reads as complete.
 
 Then check each candidate against every hard filter, recording which source settled it and the date you looked. A row whose filters were probably fine is unverified, so label it that way or drop it.
+
+Techniques that hold up, when the filters are about size, technology or recency:
+
+- **Counts**: enumerate the store locator's per-store pages or its sitemap, or take the brand's own printed figure. Where the locator renders in JavaScript, the store API behind it usually returns the whole list.
+- **Product and app facts**: the public app-store lookup endpoints return seller, bundle identifier, version, last-updated date, rating and rating count. Last updated is the fact that matters. A listing that has not moved in a year is a different prospect from one that shipped last week, and a listing marked inactive is a different prospect again.
+- **Who the incumbent is**: bundle identifiers, the DNS records on an ordering subdomain, and the association files a vendor has to publish for deep links all name the vendor when the listing does not. Two brands shipping an identical build number on the same day are on the same templated platform, which tells you what a displacement conversation is actually against.
+
+**Small samples are not evidence.** A two-star average from eight ratings says nothing at all; the same average from two hundred says something. Quote the count beside the rating or leave both out.
 
 ### 3. Keep the rejects
 
@@ -86,9 +96,15 @@ The rejected list is half the output. It stops the same company being re-found n
 Rejected · Northwind Coffee · 4 locations, hard filter is 10 to 60 · store locator, 2026-08-06
 ```
 
-### 4. Dedupe before anyone sees it
+### 4. Suppress from your own footprint, not only from the CRM
 
-Against current customers, open opportunities, recent closed-lost, live sequences, and anyone who asked not to be contacted. A prospecting email to an existing customer is the fastest way to lose that account's trust in the team.
+The CRM is the right suppression list: current customers, open opportunities, recent closed-lost, live sequences, and anyone who asked not to be contacted. A prospecting email to an existing customer is the fastest way to lose that account's trust in the team.
+
+When the CRM is not connected, you are not stuck. **Your own public footprint is a suppression list you always have.** The products published under your company's own developer or vendor account, your logo wall, your case studies, your integration directory: every account that appears there is a customer, and excluding them needs no internal access at all.
+
+Then say what that misses, because it is a lot. Open opportunities, past losses, and customers whose product ships under their own name rather than yours are all invisible to it. The list still needs a pipeline check before anyone sends.
+
+**A former customer now running a competitor is not a reject.** It is a dated displacement fact and often the most useful row on the page. Record who they moved to and when the replacement shipped.
 
 ### 5. Contacts, when they are in scope
 
@@ -101,6 +117,11 @@ Never invent a phone number or a personal address.
 For each row: the company, the hard filters it passed, the source and date behind each, soft signals with their values, and one plain sentence on why it fits.
 
 Then the part that gets skipped, a coverage note. How you searched, roughly what share of the segment you think you saw, and what you could not check. A list that hides its gaps gets read as the whole market.
+
+Two caveats belong there every time, because they change how the list gets worked:
+
+- **Counts at the very edge of the band.** Name them. They are the first rows to re-confirm and the first to fall out.
+- **A band that sits outside your existing customers.** If the proof you have comes from ten-location operators and this list is fifty-location chains, say so plainly. The case studies will not transfer, the cycle is longer, procurement is more formal, and a franchisee-consent problem may exist that has never come up before. That is worth knowing before the segment gets a quarter of someone's time.
 
 ## Common Rationalizations
 
@@ -118,6 +139,11 @@ Then the part that gets skipped, a coverage note. How you searched, roughly what
 | "Our best customers all have this trait." | Check the losses too. A trait shared by wins and losses filters nothing. |
 | "The model knows which companies fit." | Training data is stale and confidently wrong about company facts. Every row needs a source looked at today. |
 | "One good search covers the segment." | Directories, app stores, job posts and exhibitor lists surface different companies. One angle looks complete and is not. |
+| "Their about page says 45 locations." | Marketing numbers are wrong in both directions, and one of them will put the account outside the band. Count the locator. |
+| "No CRM, so I cannot dedupe." | Your own public footprint is a suppression list you always have. Use it, then write down what it misses. |
+| "They churned to a competitor, so cross them off." | That is a dated displacement fact and probably the best row on the page. Record who they moved to and when. |
+| "The app is on two stars, that is the whole pitch." | From eight ratings that is noise. Quote the sample size or drop the claim. |
+| "The band is a bit above our current customers, close enough." | Then the case studies do not transfer and the cycle is longer. Say it in the coverage note rather than letting someone find out in month two. |
 
 ## Red Flags
 
@@ -132,6 +158,12 @@ Then the part that gets skipped, a coverage note. How you searched, roughly what
 - Data taken from behind a login, a paywall, or against a site's terms.
 - Every row scored 8 out of 10. A score that never rejects is decoration.
 - The team's own ICP quietly replaced with a better-sounding one.
+- A location count taken from press or an aggregator with no first-party check.
+- A rating or review count quoted without its sample size.
+- No suppression at all, on the grounds that the CRM was not connected.
+- Accounts sitting at the very edge of the band, presented as solidly inside it.
+- A former customer now on a competitor silently dropped instead of recorded.
+- A list far outside the size band of every existing customer, with no note that the proof does not transfer.
 
 ## Verification
 
@@ -144,4 +176,10 @@ Then the part that gets skipped, a coverage note. How you searched, roughly what
 - [ ] Pattern-guessed contact details are labelled unverified
 - [ ] Only permitted sources were used, and they are named
 - [ ] A coverage note states how you searched and what you could not check
+- [ ] Location and size facts come from a first-party source, with third parties used only to cross-check
+- [ ] Product and app facts include the last-updated date, and any rating carries its sample size
+- [ ] Suppression used the CRM where connected and your own public footprint where not, with the gap named
+- [ ] Former customers now running a competitor are recorded with dates, not dropped
+- [ ] Counts at the edge of the band are flagged for re-confirmation
+- [ ] Where the band sits outside the existing customer base, the output says so
 - [ ] Where the profile is still a hypothesis, the output says so

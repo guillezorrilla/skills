@@ -1,5 +1,41 @@
 # @guillezorrilla/skills
 
+## 1.11.0
+
+### Minor Changes
+
+- `icp-lead-generation` now carries the research techniques it was missing.
+
+  Tested against a control on the same task, the first version bought a consistent output shape
+  and cost research depth: it scored 8 of 8 on structure and 3 of 7 on technique, while the
+  control with no skill at all scored 6 and 7. Net, the skill was worse than not using it, which
+  is the opposite of the point.
+
+  Everything the control did better is now in the skill:
+
+  - **Count the locator, not the press release.** Stated figures disagree with a brand's own
+    store locator in both directions, and either direction can put an account outside the band.
+    Third-party numbers cross-check a first-party count; they never are the count.
+  - **Use the public app-store lookup endpoints** for seller, bundle identifier, version,
+    last-updated date, rating and rating count. Last updated is the fact that matters, and an
+    inactive listing is a different prospect again.
+  - **Identify the incumbent** from bundle identifiers, the DNS records on an ordering subdomain,
+    and the association files a vendor must publish for deep links. Two brands shipping an
+    identical build on the same day are on one templated platform.
+  - **Suppress from your own public footprint when there is no CRM.** The products published
+    under your own developer or vendor account, your logo wall, your case studies. Then say what
+    that misses, because open opportunities and past losses are invisible to it.
+  - **A former customer now on a competitor is a dated displacement fact**, not a reject. Record
+    who they moved to and when the replacement shipped.
+  - **Small samples are not evidence.** Two stars from eight ratings says nothing. Quote the
+    count beside the rating or leave both out.
+  - **Two caveats in every coverage note:** counts sitting at the edge of the band, and a band
+    that sits outside your existing customer base, where the proof will not transfer and the
+    cycle is longer.
+
+  Re-tested after the change: 8 of 8 on structure and 7 of 7 on technique, against the control's
+  13 of 15.
+
 ## 1.10.0
 
 ### Minor Changes
