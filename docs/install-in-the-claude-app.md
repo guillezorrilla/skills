@@ -1,8 +1,9 @@
 # Install in the Claude app: no terminal
 
-Some of these skills are not about code at all. Two of them are sales work: finding accounts
-that fit your profile and provably do, and writing a first message that does not invent
-things. Two more, `grilling` and `handoff`, are useful to anyone. Nobody should need a
+Some of these skills are not about code at all. Four of them are sales and customer success
+work: finding accounts that fit your profile and provably do, researching them properly,
+writing a first message that does not invent things, and keeping in touch with customers
+without sounding like a template. Two more, `grilling` and `handoff`, are useful to anyone. Nobody should need a
 command line to get them.
 
 In the Claude apps, [claude.ai](https://claude.ai) and Claude Desktop, a skill installs
@@ -54,9 +55,12 @@ matches it:
 | Skill | Say something like | What happens |
 | --- | --- | --- |
 | `icp-lead-generation` | "Find me 20 accounts like Northwind." · "I need new leads." | Turns your profile into filters that can come back false, then proves each account fits with a source and a date. Keeps the rejects, which is the only way to tell whether the profile itself is off. |
+| `account-enrichment` | "What's going on at Acme?" · "Who should I talk to there?" | A one-page brief for one decision: is there a reason to write to them now. Checks your CRM, inbox and call notes before the web, labels every line verified, inferred or unknown, and ends with the objection you will hit and what not to say. |
 | `cold-outreach` | "Write the first email to this account." | One dated fact as the opener, one small ask, a graceful way to say no, and your real identity with a working opt-out. Refuses to write "congrats on the round" when nothing sourced says there was one. |
 
-Both work alone, and `icp-lead-generation` feeds `cold-outreach` when you want the whole path from a target list to a first message.
+| `proactive-customer-outreach` | "Nudge Sam about onboarding." · "Write a check-in for this account." | Learns your voice from the messages of yours that actually got replies, uses real numbers with dates, names the oldest thing nobody has answered, and will not send a cheerful milestone note while that customer has an open escalation. |
+
+They work alone, and they chain: a target list feeds the research, the research feeds the first message, and the customer skill takes over once they are a customer.
 
 The interview in `grilling` is meant to push back. If it asks you what you'd want if you
 didn't have to justify it to anyone, that is the skill working, not going off-script.

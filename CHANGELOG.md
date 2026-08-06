@@ -1,5 +1,39 @@
 # @guillezorrilla/skills
 
+## 1.12.0
+
+### Minor Changes
+
+- `account-enrichment` and `proactive-customer-outreach` return, rebuilt so they beat a control
+  instead of tying it.
+
+  Both were removed in 1.10.0 for matching their no-skill controls rather than beating them. The
+  diagnosis that fixed `icp-lead-generation` applies to them too: a skill that only imposes an
+  output shape is a tax, and it has to carry technique. Everything their controls did better is
+  now written in.
+
+  **`account-enrichment`** now hunts the stalled attempt rather than waiting for a trigger,
+  because a rollout live at four locations out of twenty-nine proves both that someone wanted it
+  and that the attempt ran out of road. It treats absence as evidence, so what you looked for and
+  did not find is recorded alongside what you found. It confirms names against a primary source,
+  since aggregators keep stale titles alive for years and addressing someone by a job they left
+  is the most expensive small error in prospecting. And it ends with four things instead of two:
+  why now, what would disqualify them, the objection you will hit in their words, and what not to
+  say, which is the ten minutes of looking that prevents the one sentence that loses an account.
+
+  **`proactive-customer-outreach`** now sweeps every open item before drafting rather than
+  answering the loudest one. The oldest neglected ticket is usually the real relationship risk,
+  because nobody has told the customer it exists, and naming it unprompted is the clearest signal
+  that a human is watching the account. During an incident it offers a route faster than the
+  queue the customer is already stuck in. And it ends with the follow-through the sender has to
+  do today, since every promise in the message is a commitment somebody has to keep, and a
+  promised update followed by silence is worse than sending nothing.
+
+  Scored against clean controls on the same tasks. `account-enrichment` went from 10 of 12 to
+  12 of 12, against the control's 9. `proactive-customer-outreach` went from 10 of 12 to 12 of
+  12, against the control's 11. The two things the enrichment control never produced were a
+  disqualifier and a list of landmines.
+
 ## 1.11.0
 
 ### Minor Changes
