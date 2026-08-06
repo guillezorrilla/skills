@@ -51,6 +51,17 @@ Flags exist to skip the prompts when you already know the answer:
 Skills are symlinked into agent directories by default, so editing the source updates
 every agent at once. Update later with `npx skills@latest update --global`.
 
+Supported agents include **Codex, Kiro, Antigravity, Cursor, Gemini CLI, Windsurf,
+Copilot, Zed, Warp, opencode, Droid, Goose, Roo, Cline** and many more — `--agent '*'`
+installs to every one it finds. To name a few:
+
+```bash
+npx skills@latest add guillezorrilla/skills --global --agent codex,kiro-cli,antigravity
+```
+
+Passing an unknown agent name prints the full valid list, which is the quickest way to
+find the exact identifier for a harness.
+
 ### Which route?
 
 | | Claude Code plugin | `npx skills add` |

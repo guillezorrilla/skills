@@ -1,7 +1,7 @@
 # Contributing
 
-Ask an agent to run the repo-local `adding-a-skill` skill — it holds the full
-checklist. The short version:
+[.agents/adding-a-skill.md](./.agents/adding-a-skill.md) holds the full checklist —
+point an agent at it. The short version:
 
 ```bash
 npx skills@latest init my-skill    # skills/<bucket>/my-skill/SKILL.md

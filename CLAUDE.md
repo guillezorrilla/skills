@@ -14,7 +14,7 @@ Skills are organised into bucket folders under `skills/`:
 | --- | --- |
 | `skills/<bucket>/<name>/SKILL.md` | a shipped skill |
 | `skills/<bucket>/README.md` | bucket index, grouped user-invoked / model-invoked |
-| `.agents/skills/<name>/SKILL.md` | repo-only skills, never shipped |
+| `.agents/adding-a-skill.md` | how to add a skill here — a plain doc, **not** a `SKILL.md` |
 | `.agents/adr/` | decision records — why, not what |
 | `.agents/invocation.md` | model-invoked vs user-invoked |
 | `docs/<skill-name>.md` | human-facing page, own skills only |
@@ -39,7 +39,10 @@ CI enforces this.
   [.changeset/README.md](./.changeset/README.md).
 - Run `npm run check`, `npm run check:plugin` and `npm run check:version` before
   pushing. CI runs those plus the cross-reference and documentation assertions.
-- `AGENTS.md` is a symlink to this file. Never edit it directly.
+- `AGENTS.md` is a **pointer** to this file, for harnesses (Codex and others) that read
+  `AGENTS.md` and never `CLAUDE.md`. Keep it a pointer — never copy content into it.
+- A `SKILL.md` anywhere outside `skills/` gets offered to users, because the installer
+  walks the whole tree. Repo-only guidance is a plain `.md`. CI fails otherwise.
 - Record non-obvious decisions in `.agents/adr/` rather than in commit messages.
 
 ## Vendored skills

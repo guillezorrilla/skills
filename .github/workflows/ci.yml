@@ -21,6 +21,17 @@ jobs:
       - name: Validate skill frontmatter
         run: npm run check
 
+      # The installer walks the whole tree for SKILL.md, so a SKILL.md anywhere
+      # outside skills/ gets offered to users as if it were a shipped skill.
+      - name: Assert no SKILL.md outside skills/
+        run: |
+          stray=$(find . -name SKILL.md -not -path "./skills/*" -not -path "./node_modules/*")
+          if [ -n "$stray" ]; then
+            echo "::error::SKILL.md outside skills/ ships to users: $stray"
+            exit 1
+          fi
+          echo "none"
+
       - name: Validate plugin manifests
         run: npx -y @anthropic-ai/claude-code@latest plugin validate . --strict
 
