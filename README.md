@@ -1,44 +1,76 @@
-# skills
+# Guille's Skills
 
-Personal agent skills, distributed with [`skills`](https://github.com/mattpocock/skills).
+Agent skills for frontier-model orchestration.
 
-## Install
+**Two ways in, two philosophies.** The Claude Code plugin installs the whole set as
+a managed, read-only bundle that updates when I ship — you subscribe rather than
+fork. `skills` copies editable skill files into your project, so you can hack on
+them and make them your own. **Pick one** — installing both leaves you with every
+skill twice.
 
-On any machine, user-level, into every agent (Claude Code, Codex, …):
+## 1. Get the skills
+
+### Claude Code
+
+```bash
+/plugin marketplace add guillezorrilla/skills
+/plugin install guillezorrilla-skills@guillezorrilla
+```
+
+Updates arrive automatically after that. This is not in Claude Code's official
+marketplace, so unlike a first-party plugin the `marketplace add` line is required
+once — after that it behaves the same.
+
+### Codex, and other agents
+
+```bash
+npx skills@latest add guillezorrilla/skills
+```
+
+The installer lets you pick which skills to take and which agents to install them
+on. Add `--global` for user-level instead of per-project, and `--agent '*'` to hit
+every agent at once:
 
 ```bash
 npx skills@latest add guillezorrilla/skills --global --agent '*'
 ```
 
-Per-repo instead of global: drop `--global`. Single skill: `--skill efficient-fable`.
+Skills are symlinked into agent directories rather than copied, so editing the
+source updates every agent. Pass `--copy` if you would rather have independent
+files. Update later with `npx skills@latest update --global`.
 
-Pull later changes:
-
-```bash
-npx skills@latest update --global
-```
-
-Skills are symlinked into agent directories, not copied, so editing the source here
-updates every agent at once.
-
-## Skills
+## 2. The skills
 
 | Skill | Purpose |
 | --- | --- |
-| `efficient-fable` | Fable 5 orchestrates; Haiku/Sonnet gather evidence, codex implements on a separate bill, Opus 5 debugs. Gate, routing table, brief/packet format, diff-only verification. |
+| `efficient-fable` | Fable 5 plans, briefs, judges and synthesizes. Cheap Claude agents gather evidence, codex implements on a separate bill, Opus 5 debugs. Ships the delegation gate, the model routing table, the brief/packet format, and diff-only verification. |
 
-## The one piece this does not carry
+`efficient-fable` needs an `AGENTS.md` in your repo so codex can read your rules —
+the skill checks for one and offers to symlink `AGENTS.md -> CLAUDE.md` when it
+runs. It never creates files behind your back.
 
-`efficient-fable` expects a `SessionStart` hook that symlinks `AGENTS.md -> CLAUDE.md`
-so Codex can read repo rules. Hooks live in `~/.claude/settings.json`, which the
-skills CLI does not manage. On a new machine, run once:
+## 3. Adding or editing a skill
+
+One directory per skill, discovered by walking the tree — no manifest to update,
+and both install routes pick it up.
 
 ```bash
-jq '.hooks.SessionStart += [{"hooks":[{"type":"command","statusMessage":"Linking AGENTS.md","timeout":10,"command":"d=$(jq -r \"\\(.cwd // \\\".\\\")\" 2>/dev/null || echo .); if [ -f \"$d/CLAUDE.md\" ] && [ ! -e \"$d/AGENTS.md\" ] && ln -s CLAUDE.md \"$d/AGENTS.md\" 2>/dev/null; then g=$(git -C \"$d\" rev-parse --path-format=absolute --git-common-dir 2>/dev/null); [ -n \"$g\" ] && ! grep -qxF AGENTS.md \"$g/info/exclude\" 2>/dev/null && echo AGENTS.md >> \"$g/info/exclude\"; fi; true"}]}]' \
-  ~/.claude/settings.json > /tmp/s.json && mv /tmp/s.json ~/.claude/settings.json
+npx skills@latest init my-skill       # scaffolds skills/my-skill/SKILL.md
+$EDITOR skills/my-skill/SKILL.md
+npm run check                         # validates frontmatter on every skill
 ```
 
-Escaping that inside `jq` is fragile — easier to open `~/.claude/settings.json` on
-this machine, copy the `hooks` block, and paste it there. If this grows past one
-hook, add a `.claude-plugin/` + `hooks/hooks.json` to this repo and install it as a
-Claude Code plugin alongside the skills CLI (what `mattpocock/skills` does).
+`SKILL.md` frontmatter needs `name` (kebab-case, matching the directory) and
+`description`. The description is the only thing an agent sees when deciding
+whether to load the skill, so write it as trigger conditions — "Use when …" — not
+as a summary.
+
+Test a change before pushing:
+
+```bash
+npx skills@latest add ./ --skill my-skill --agent claude-code
+```
+
+## License
+
+MIT

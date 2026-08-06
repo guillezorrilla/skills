@@ -1,0 +1,19 @@
+{
+  "name": "guillezorrilla",
+  "owner": {
+    "name": "Guillermo Zorrilla",
+    "url": "https://github.com/guillezorrilla"
+  },
+  "description": "Guille's agent skills, as an installable Claude Code plugin.",
+  "plugins": [
+    {
+      "name": "guillezorrilla-skills",
+      "source": "./",
+      "displayName": "Guille's Skills",
+      "description": "Frontier-model orchestration — Fable 5 plans and judges, cheaper Claude agents gather evidence, codex implements on a separate bill.",
+      "category": "engineering",
+      "keywords": ["skills", "orchestration", "codex", "subagents"],
+      "license": "MIT"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "name": "guillezorrilla-skills",
+  "displayName": "Guille's Skills",
+  "description": "Agent skills for frontier-model orchestration — Fable 5 plans and judges while cheaper Claude agents gather evidence and codex implements on a separate bill.",
+  "author": {
+    "name": "Guillermo Zorrilla",
+    "url": "https://github.com/guillezorrilla"
+  },
+  "homepage": "https://github.com/guillezorrilla/skills",
+  "repository": "https://github.com/guillezorrilla/skills",
+  "license": "MIT",
+  "keywords": ["skills", "orchestration", "codex", "subagents", "agent-workflows"],
+  "skills": "./skills/"
+}

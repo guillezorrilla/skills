@@ -12,25 +12,29 @@ Prereqs, check once at start: session model is Fable (`/model fable`), effort is
 **high** not max, and `/codex:setup` passes. If the model is not Fable, say so and
 stop - orchestrating Sonnet from Sonnet saves nothing.
 
-## Step 0 - confirm repo rules are reachable by codex
+## Step 0 - make repo rules reachable by codex
 
-Codex reads `AGENTS.md`, never `CLAUDE.md`.
+Codex reads `AGENTS.md`, never `CLAUDE.md`. Check this **before** the first codex
+handoff, and tell the user what you found:
 
-A `SessionStart` hook in `~/.claude/settings.json` already symlinks
-`AGENTS.md -> CLAUDE.md` in any project that has a CLAUDE.md and no AGENTS.md,
-and adds it to `.git/info/exclude` so it stays out of `git status`. So usually
-there is nothing to do - just confirm `AGENTS.md` exists.
+- **Both missing** - put the binding constraints in each brief instead. Done.
+- **`CLAUDE.md` but no `AGENTS.md`** - symlink it, then say you did:
 
-Two cases where you must look closer:
+  ```bash
+  ln -s CLAUDE.md AGENTS.md
+  git rev-parse --git-common-dir >/dev/null 2>&1 &&
+    echo AGENTS.md >> "$(git rev-parse --path-format=absolute --git-common-dir)/info/exclude"
+  ```
 
-- **AGENTS.md is a real file, not a symlink** (`ls -l AGENTS.md`). Something
-  generated it - e.g. the `skills` CLI, which writes a deterministic transform of
-  CLAUDE.md plus a mirrored `.agents/` rules tree. That is *better* than a symlink
-  because the `@`-import lines get rewritten to paths that exist. But the sync is
-  usually **manual**, so it drifts. If CLAUDE.md is newer than AGENTS.md
-  (`ls -lt CLAUDE.md AGENTS.md`), say so before delegating - codex is about to
-  read stale rules.
-- **Neither file exists.** Put the binding constraints in each brief instead.
+  The exclude line keeps it out of `git status` so it is never committed by
+  accident. Say so - it is their repo, and they may prefer to commit it for
+  teammates who use codex.
+- **`AGENTS.md` is a real file, not a symlink** (`ls -l AGENTS.md`) - a tool
+  generated it. The `skills` CLI does this: a deterministic transform of CLAUDE.md
+  plus a mirrored `.agents/` rules tree, which is *better* than a symlink because
+  the `@`-import lines get rewritten to paths that exist. But that sync is usually
+  **manual**. Run `ls -lt CLAUDE.md AGENTS.md`; if CLAUDE.md is newer, stop and say
+  so - codex is about to read stale rules.
 
 Never *write* an AGENTS.md yourself - LLM-authored ones measurably lower success
 (~3%) and raise cost (20%+). Symlink or deterministic transform only.

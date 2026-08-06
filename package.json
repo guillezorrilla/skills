@@ -1,0 +1,11 @@
+{
+  "name": "@guillezorrilla/skills",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Agent skills for frontier-model orchestration.",
+  "license": "MIT",
+  "scripts": {
+    "check": "node scripts/check-skills.mjs"
+  }
+}
