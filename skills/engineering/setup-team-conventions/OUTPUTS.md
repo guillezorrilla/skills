@@ -1,10 +1,10 @@
 # Output shapes
 
 Five files under `docs/agents/`, plus one block in the instruction file. Keep them terse
-and factual — these are read by agents mid-task, so every line should be actionable.
+and factual, these are read by agents mid-task, so every line should be actionable.
 
 Every file carries a **Confidence** line. `observed` means you measured it in this repo.
-`assumed` means you inferred it. `unknown` means you could not tell — write that rather
+`assumed` means you inferred it. `unknown` means you could not tell, write that rather
 than a plausible value, because the next agent acts on whatever is here.
 
 ## `docs/agents/forge.md`
@@ -17,7 +17,7 @@ than a plausible value, because the next agent acts on whatever is here.
 - **Change request is called**: pull request (PR)
 - **CLI**: `gh` (authenticated as of setup)
 - **CI config**: `.github/workflows/`
-- **Confidence**: observed — `origin` → github.com/acme/api
+- **Confidence**: observed, `origin` → github.com/acme/api
 
 ## Commands
 
@@ -25,7 +25,7 @@ than a plausible value, because the next agent acts on whatever is here.
 - Open one: `gh pr create --base develop`
 - Read a PR: `gh pr view <n>`
 
-If the CLI is unavailable, use the REST API — do not invent a command.
+If the CLI is unavailable, use the REST API, do not invent a command.
 ```
 
 ## `docs/agents/tracker.md`
@@ -37,8 +37,8 @@ If the CLI is unavailable, use the REST API — do not invent a command.
 - **Project prefixes**: ACME, PLAT
 - **Key shape**: `[A-Z]+-\d+`
 - **Base URL**: https://acme.atlassian.net/browse/
-- **CLI**: none — REST API only
-- **Confidence**: observed — 187/200 sampled commits carry a key
+- **CLI**: none, REST API only
+- **Confidence**: observed, 187/200 sampled commits carry a key
 
 ## Rules
 
@@ -54,10 +54,10 @@ If the CLI is unavailable, use the REST API — do not invent a command.
 
 - **Default branch**: develop
 - **Direct pushes to default**: not permitted
-- **Branch naming**: `ACME-1234-short-slug` — observed on 14/15 remote branches
-- **Commit subject**: `type(scope): subject`, ticket key in the subject —
+- **Branch naming**: `ACME-1234-short-slug`, observed on 14/15 remote branches
+- **Commit subject**: `type(scope): subject`, ticket key in the subject, 
   142/200 sampled match, so treat as the rule and match it
-- **Merge style**: squash — 50/50 recent default-branch commits single-parent
+- **Merge style**: squash, 50/50 recent default-branch commits single-parent
 - **Who merges**: the reviewer, after approval
 - **Confidence**: branch/commit observed, who-merges confirmed by the user
 
@@ -100,20 +100,20 @@ If the CLI is unavailable, use the REST API — do not invent a command.
 
 - **Required approvals**: 2
 - **Owners file**: `CODEOWNERS` at repo root
-- **PR template**: `.github/pull_request_template.md` — fill every section
+- **PR template**: `.github/pull_request_template.md`, fill every section
 - **Confidence**: observed via branch protection API
 
 ## Rules
 
 - Human review is the safety system. Ask for it; do not self-approve or merge.
 - Review comments: three to five lines, the problem and the fix, no preamble.
-- If protection could not be read, it is recorded as unknown — assume review is
+- If protection could not be read, it is recorded as unknown, assume review is
   required.
 ```
 
 ## The instruction-file block
 
-Added to `CLAUDE.md` (or `AGENTS.md` when that is the one present). Pointers only —
+Added to `CLAUDE.md` (or `AGENTS.md` when that is the one present). Pointers only.
 never copy the file contents in, or the two drift and the copy is the stale one.
 
 ```markdown
@@ -122,10 +122,10 @@ never copy the file contents in, or the two drift and the copy is the stale one.
 Team conventions detected by `setup-team-conventions`. Edit these files directly; re-run
 the skill only if the team changes tooling.
 
-- **Forge** — GitHub, PRs via `gh`. See `docs/agents/forge.md`.
-- **Tracker** — Jira (ACME, PLAT). See `docs/agents/tracker.md`.
-- **Conventions** — branch `ACME-1234-slug` off `develop`, conventional commits, squash
+- **Forge**: GitHub, PRs via `gh`. See `docs/agents/forge.md`.
+- **Tracker**: Jira (ACME, PLAT). See `docs/agents/tracker.md`.
+- **Conventions**: branch `ACME-1234-slug` off `develop`, conventional commits, squash
   merge. See `docs/agents/conventions.md`.
-- **Verify** — `pnpm typecheck`, `pnpm test`, `pnpm lint`. See `docs/agents/verify.md`.
-- **Review** — 2 approvals, CODEOWNERS. See `docs/agents/review.md`.
+- **Verify**: `pnpm typecheck`, `pnpm test`, `pnpm lint`. See `docs/agents/verify.md`.
+- **Review**: 2 approvals, CODEOWNERS. See `docs/agents/review.md`.
 ```

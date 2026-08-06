@@ -1,16 +1,16 @@
 ---
 name: setup-team-conventions
-description: "Detect how this team actually works — forge, issue tracker, branch and commit conventions, verify commands, review rules — and record it for the other skills. Run once per repo."
+description: "Detect how this team actually works (forge, issue tracker, branch and commit conventions, verify commands, review rules) and record it for the other skills. Run once per repo."
 disable-model-invocation: true
 ---
 
 # Setup Team Conventions
 
-The other skills make assumptions: that `implement` knows whether to say "pull request" or "merge request", that `handoff` knows where a ticket lives, that "done" means a specific command exited 0. On a solo project those assumptions are harmless. On a team they are wrong in ways that produce confidently mis-shaped work — a branch named against convention, a commit missing the ticket key CI requires, a PR opened on a forge that gates merges differently.
+The other skills make assumptions: that `implement` knows whether to say "pull request" or "merge request", that `handoff` knows where a ticket lives, that "done" means a specific command exited 0. On a solo project those assumptions are harmless. On a team they are wrong in ways that produce confidently mis-shaped work, a branch named against convention, a commit missing the ticket key CI requires, a PR opened on a forge that gates merges differently.
 
 This skill finds out, once, and writes it down where every skill and every teammate's agent can read it.
 
-**Read the team's history, not their documentation.** A `CONTRIBUTING.md` records what someone intended in 2023; `git log` records what the team does. When they disagree, the log wins — say so, and record the log's answer.
+**Read the team's history, not their documentation.** A `CONTRIBUTING.md` records what someone intended in 2023; `git log` records what the team does. When they disagree, the log wins, say so, and record the log's answer.
 
 **Record, never impose.** This skill writes `docs/agents/*.md` and one block in `CLAUDE.md`/`AGENTS.md`. It does not create PR templates, tracker labels, CI config, or CONTRIBUTING files. In an established repo those absences are usually deliberate. Offer; never do.
 
@@ -22,31 +22,31 @@ See [FORGES.md](FORGES.md) for per-forge and per-tracker facts, and [OUTPUTS.md]
 
 Run the checks below before asking anything. Anything you can answer from the repo is not a question.
 
-**Forge** — `git remote -v`. Match the host: `github.com` → GitHub, `bitbucket.org` → Bitbucket, `gitlab.com` or a self-hosted GitLab → GitLab, `dev.azure.com`/`visualstudio.com` → Azure DevOps. A self-hosted host is ambiguous; look for `.gitlab-ci.yml`, `bitbucket-pipelines.yml`, or `.github/` to disambiguate, and ask if still unclear. Multiple remotes means a mirror — ask which one the team's reviews happen on.
+**Forge**, `git remote -v`. Match the host: `github.com` → GitHub, `bitbucket.org` → Bitbucket, `gitlab.com` or a self-hosted GitLab → GitLab, `dev.azure.com`/`visualstudio.com` → Azure DevOps. A self-hosted host is ambiguous; look for `.gitlab-ci.yml`, `bitbucket-pipelines.yml`, or `.github/` to disambiguate, and ask if still unclear. Multiple remotes means a mirror, ask which one the team's reviews happen on.
 
-**Tracker** — in order of evidence strength:
+**Tracker**: in order of evidence strength:
 
 1. Ticket keys in real commit subjects and branch names: `git log --oneline -200` and `git branch -r --format='%(refname:short)'`. A recurring `[A-Z][A-Z0-9]+-\d+` is a Jira-style key; capture the actual project prefixes you see, not a guess.
 2. Links in merged PR/MR bodies (`gh pr list --state merged --limit 20 --json body` where available).
 3. `.github/ISSUE_TEMPLATE/`, `.gitlab/issue_templates/` → the forge's own issues.
 4. A tracker URL in `README.md` or `CONTRIBUTING.md`.
 
-The tracker is frequently **not** the forge — Jira with Bitbucket, Jira with GitHub, and Linear with GitHub are all common. Do not infer one from the other.
+The tracker is frequently **not** the forge, Jira with Bitbucket, Jira with GitHub, and Linear with GitHub are all common. Do not infer one from the other.
 
-**Branch convention** — from `git branch -r` and merge-commit subjects. Report the dominant observed pattern with a real example, e.g. `ABC-1234-short-slug`, `feature/short-slug`, `username/topic`. Note the default branch (`git symbolic-ref refs/remotes/origin/HEAD`) — it is often `develop` or `trunk`, not `main`, and getting this wrong is how an agent pushes to the wrong place.
+**Branch convention**: from `git branch -r` and merge-commit subjects. Report the dominant observed pattern with a real example, e.g. `ABC-1234-short-slug`, `feature/short-slug`, `username/topic`. Note the default branch (`git symbolic-ref refs/remotes/origin/HEAD`), it is often `develop` or `trunk`, not `main`, and getting this wrong is how an agent pushes to the wrong place.
 
-**Commit convention** — sample `git log --format=%s -100`. Measure, don't eyeball: what share match `type(scope): subject`? What share carry a ticket key, and in what position? Report the share, because "mostly conventional" and "always conventional" call for different instructions.
+**Commit convention**: sample `git log --format=%s -100`. Measure, don't eyeball: what share match `type(scope): subject`? What share carry a ticket key, and in what position? Report the share, because "mostly conventional" and "always conventional" call for different instructions.
 
-**Verify commands** — the commands that decide whether work is done. Read the CI config, and prefer what CI runs over what the README suggests:
+**Verify commands**: the commands that decide whether work is done. Read the CI config, and prefer what CI runs over what the README suggests:
 
 - `.github/workflows/*.yml`, `bitbucket-pipelines.yml`, `.gitlab-ci.yml`, `Jenkinsfile`, `azure-pipelines.yml`
 - the scripts those call, in `package.json`, `Makefile`, `justfile`, `pyproject.toml`, `Cargo.toml`, `build.gradle`
 
 Note the package manager from its lockfile and record commands in that form. If the repo has a lockfile for one manager and CI invokes another, record the CI one and flag the mismatch.
 
-**Review rules** — `CODEOWNERS` (root, `.github/`, `.gitlab/`), PR/MR templates, and branch protection if the CLI can read it (`gh api repos/{owner}/{repo}/branches/{branch}/protection`). Record required approvals and whether the default branch accepts direct pushes. A 403 means you lack permission, not that protection is absent — record "unknown", never "none".
+**Review rules**, `CODEOWNERS` (root, `.github/`, `.gitlab/`), PR/MR templates, and branch protection if the CLI can read it (`gh api repos/{owner}/{repo}/branches/{branch}/protection`). Record required approvals and whether the default branch accepts direct pushes. A 403 means you lack permission, not that protection is absent, record "unknown", never "none".
 
-**Merge style** — from the last ~50 commits on the default branch: are they squashes, merge commits, or a linear rebase history? This tells `implement` what a finished branch should look like.
+**Merge style**: from the last ~50 commits on the default branch: are they squashes, merge commits, or a linear rebase history? This tells `implement` what a finished branch should look like.
 
 ### 2. Present
 
@@ -69,11 +69,11 @@ If detection settled everything, say so and ask one question only: does this loo
 
 ### 3. Confirm
 
-Show the drafts — the five `docs/agents/*.md` files and the `## Agent skills` block — and let the user edit before anything is written. This is going into a shared repo; a teammate will read it in a PR.
+Show the drafts, the five `docs/agents/*.md` files and the `## Agent skills` block, and let the user edit before anything is written. This is going into a shared repo; a teammate will read it in a PR.
 
 ### 4. Write
 
-Pick the instruction file: edit `CLAUDE.md` if it exists, else `AGENTS.md`, else ask which to create — never create one when the other is already there, and never create both.
+Pick the instruction file: edit `CLAUDE.md` if it exists, else `AGENTS.md`, else ask which to create, never create one when the other is already there, and never create both.
 
 If an `## Agent skills` block already exists, update it in place rather than appending a second one. Leave the surrounding sections alone.
 
@@ -81,6 +81,6 @@ Write the files per [OUTPUTS.md](OUTPUTS.md). Record **unknown** as unknown; a c
 
 ### 5. Done
 
-Tell the user which skills now read which files, and that `docs/agents/*.md` can be hand-edited later — re-running this skill is only for when the team changes tooling.
+Tell the user which skills now read which files, and that `docs/agents/*.md` can be hand-edited later, re-running this skill is only for when the team changes tooling.
 
 Suggest committing it on a branch as a normal PR, so the team sees and agrees to the conventions being recorded on their behalf. Do not commit it yourself.

@@ -1,13 +1,13 @@
 ---
 name: planning-and-task-breakdown
-description: Turns confirmed intent into ordered, independently verifiable tasks — a dependency graph sliced vertically, each task carrying its own acceptance check and the paths it owns. Use when work is too large or vague to start, when it spans several files or sessions, when parallel work is possible, or when scope needs communicating to a human before any code exists.
+description: Turns confirmed intent into ordered, independently verifiable tasks, a dependency graph sliced vertically, each task carrying its own acceptance check and the paths it owns. Use when work is too large or vague to start, when it spans several files or sessions, when parallel work is possible, or when scope needs communicating to a human before any code exists.
 ---
 
 # Planning and Task Breakdown
 
 ## Overview
 
-A plan exists to make the order of work obvious and the finish line checkable. Its output is not a document to admire — it is a sequence where each step can be built, verified, and stopped after.
+A plan exists to make the order of work obvious and the finish line checkable. Its output is not a document to admire, it is a sequence where each step can be built, verified, and stopped after.
 
 The two failure modes are opposites. An absent plan produces a tangle that has to be unpicked at review. An over-elaborate plan produces ceremony for work that was three lines, and a task list nobody follows because reality moved.
 
@@ -24,13 +24,13 @@ The two failure modes are opposites. An absent plan produces a tangle that has t
 - A single-file change with obvious scope. Do it.
 - Work whose spec already contains well-defined tasks. Use those.
 - Anything where writing the plan costs more than the work. A three-line fix does not get a task list.
-- An ask nobody has confirmed yet. Planning on unconfirmed intent produces a precise plan for the wrong thing — run `grilling` first.
+- An ask nobody has confirmed yet. Planning on unconfirmed intent produces a precise plan for the wrong thing, run `grilling` first.
 
 ## Before you plan
 
 **Intent must be confirmed.** If nobody has agreed what success looks like, what is out of scope, and what the binding constraint is, you are not ready. Get that first.
 
-**Facts are yours to find.** What the code currently does, which patterns the project already uses, what CI runs, which dependency is present — go and read it. A plan built on assumed facts fails at the first task, and every downstream task inherits the error. Dispatch parallel readers if the surface is wide, all in one message rather than in waves.
+**Facts are yours to find.** What the code currently does, which patterns the project already uses, what CI runs, which dependency is present, go and read it. A plan built on assumed facts fails at the first task, and every downstream task inherits the error. Dispatch parallel readers if the surface is wide, all in one message rather than in waves.
 
 **Do not write implementation code while planning.** Reading is unlimited; writing is not. The moment you start editing, the plan stops being a plan and becomes a narration of what you already did.
 
@@ -38,7 +38,7 @@ The two failure modes are opposites. An absent plan produces a tangle that has t
 
 ### 1. Map the dependency graph
 
-Write down what must exist before what. Not a wish-list order — a *cannot-start-until* order.
+Write down what must exist before what. Not a wish-list order, a *cannot-start-until* order.
 
 ```
 schema ──▶ data access ──▶ service ──▶ endpoint ──▶ UI
@@ -47,7 +47,7 @@ schema ──▶ data access ──▶ service ──▶ endpoint ──▶ UI
 
 Anything with no unmet prerequisite can start now, and anything with the same prerequisites can run in parallel. This graph is the plan; the task list is just its topological order.
 
-### 2. Slice vertically, never by layer
+### 2. Slice vertically: never by layer
 
 Each task should deliver something observable end to end, however thin. "Schema, then all services, then all endpoints, then the UI" is horizontal: nothing works until the last layer lands, nothing can be verified along the way, and an abandoned effort leaves scaffolding with no behaviour.
 
@@ -61,14 +61,14 @@ Each task carries:
 Task N: <imperative title>
   owns:      the paths this task may change
   depends:   task numbers that must land first
-  do:        two or three sentences — what changes and where
+  do:        two or three sentences, what changes and where
   done when: the observable check that fails if this is wrong
   out:       anything explicitly not in this task
 ```
 
-`done when` is the part that matters, and it must be checkable by something other than opinion — a command and its exit code where commands exist, a named observable where they do not. "Login works" is not an acceptance check. "`POST /session` with valid credentials returns 200 and sets an httpOnly cookie" is.
+`done when` is the part that matters, and it must be checkable by something other than opinion, a command and its exit code where commands exist, a named observable where they do not. "Login works" is not an acceptance check. "`POST /session` with valid credentials returns 200 and sets an httpOnly cookie" is.
 
-`owns` is what makes parallel work safe. **If two tasks own overlapping paths, they cannot run in parallel** — order them instead. Two writers on one file silently clobber each other, and the loser's work disappears without a conflict marker.
+`owns` is what makes parallel work safe. **If two tasks own overlapping paths, they cannot run in parallel**, order them instead. Two writers on one file silently clobber each other, and the loser's work disappears without a conflict marker.
 
 ### 4. Size for one sitting
 
@@ -78,7 +78,7 @@ If a task needs the word "and" to describe, it is probably two tasks. If three t
 
 ### 5. Put checkpoints where the plan could be wrong
 
-After each group of related tasks, name a point where a human looks before more work stacks on top. Put them where an assumption gets tested for the first time — after the first vertical slice, after the first integration with something external, after anything you flagged as a risk.
+After each group of related tasks, name a point where a human looks before more work stacks on top. Put them where an assumption gets tested for the first time, after the first vertical slice, after the first integration with something external, after anything you flagged as a risk.
 
 A checkpoint has an explicit question: "does this shape work before I build eight more on it?" Not "let me know if you have thoughts".
 
@@ -86,20 +86,20 @@ A checkpoint has an explicit question: "does this shape work before I build eigh
 
 Two lists, both short:
 
-- **Risks** — what could make this plan wrong, and the cheapest thing that would tell you early.
-- **Open questions** — what you could not settle. Say who can settle each one, and whether work can start without it.
+- **Risks**: what could make this plan wrong, and the cheapest thing that would tell you early.
+- **Open questions**: what you could not settle. Say who can settle each one, and whether work can start without it.
 
 Record unknowns as unknown. A plan that quietly assumes an answer produces work built on it, and nobody knows the assumption was there.
 
 ### 7. Say what parallelises
 
-Name the tasks that can run at once, based on the graph and non-overlapping `owns`. If nothing parallelises, say that too — it tells the reader the timeline is the sum, not the max.
+Name the tasks that can run at once, based on the graph and non-overlapping `owns`. If nothing parallelises, say that too, it tells the reader the timeline is the sum, not the max.
 
 ## Where the plan lives
 
-One file, in the repo, in the project's docs location — or `tasks/plan.md` if there is no convention. Committed, so a teammate can read it in review, and so the next session picks up where this one stopped.
+One file, in the repo, in the project's docs location, or `tasks/plan.md` if there is no convention. Committed, so a teammate can read it in review, and so the next session picks up where this one stopped.
 
-Keep it alive. When reality contradicts the plan, update the plan and say what changed. A stale plan is worse than none, because people trust it. When a task is done, mark it done — with the evidence, not just a tick.
+Keep it alive. When reality contradicts the plan, update the plan and say what changed. A stale plan is worse than none, because people trust it. When a task is done, mark it done, with the evidence, not just a tick.
 
 ## Common Rationalizations
 
@@ -117,7 +117,7 @@ Keep it alive. When reality contradicts the plan, update the plan and say what c
 
 ## Red Flags
 
-- Tasks named by layer — "backend", "frontend", "tests" — rather than by observable behaviour.
+- Tasks named by layer, "backend", "frontend", "tests", rather than by observable behaviour.
 - A task with no `done when`, or one that reads "works correctly".
 - Two tasks marked parallel that both list the same file under `owns`.
 - Editing implementation files during the planning step.

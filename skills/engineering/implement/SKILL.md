@@ -1,6 +1,6 @@
 ---
 name: implement
-description: "Builds work from a spec or tickets in small verified increments — keeping the tree green, the scope narrow, and commits in the user's hands."
+description: "Builds work from a spec or tickets in small verified increments, keeping the tree green, the scope narrow, and commits in the user's hands."
 disable-model-invocation: true
 ---
 
@@ -14,18 +14,18 @@ The counter to both is the same: small increments, each one verified, each one s
 
 ## When to Use
 
-A spec, plan, or set of tickets exists and needs building. If it does not exist yet, use `grilling` to confirm intent and `planning-and-task-breakdown` to order the work — implementing against an unconfirmed ask produces precise work in the wrong direction.
+A spec, plan, or set of tickets exists and needs building. If it does not exist yet, use `grilling` to confirm intent and `planning-and-task-breakdown` to order the work, implementing against an unconfirmed ask produces precise work in the wrong direction.
 
 ## Read the team's conventions first
 
 If `docs/agents/` exists, read it before writing anything:
 
-- `conventions.md` — the default branch, branch naming, commit format
-- `verify.md` — the commands that define done
-- `review.md` — who approves, and how many
-- `forge.md` — whether this team says "pull request" or "merge request"
+- `conventions.md`, the default branch, branch naming, commit format
+- `verify.md`, the commands that define done
+- `review.md`, who approves, and how many
+- `forge.md`, whether this team says "pull request" or "merge request"
 
-Those are this team's answers and they override every default below. If the directory is absent, run `setup-team-conventions` or fall back to the defaults here — and say which you did.
+Those are this team's answers and they override every default below. If the directory is absent, run `setup-team-conventions` or fall back to the defaults here, and say which you did.
 
 ## Simplicity first
 
@@ -48,13 +48,13 @@ Build what the spec says and stop.
 - Do not refactor and implement in the same change. Both become harder to review and impossible to bisect.
 - Noticed something worth fixing? List it at the end. Do not fix it.
 
-Every changed line should trace to something in the spec. If part of the spec turns out blocked or wrong, finish everything else in full and say plainly what you left out and why — scaling the work down is the user's call, not yours.
+Every changed line should trace to something in the spec. If part of the spec turns out blocked or wrong, finish everything else in full and say plainly what you left out and why, scaling the work down is the user's call, not yours.
 
 ## The increment cycle
 
 Repeat per slice:
 
-1. **Pick the next slice** from the plan — vertical where possible, so something observable works end to end however thin.
+1. **Pick the next slice** from the plan, vertical where possible, so something observable works end to end however thin.
 2. **Make it work.** Smallest change that satisfies this slice.
 3. **Verify it.** Run the relevant test file and the type check now, not at the end.
 4. **Leave the tree green.** Every increment ends compilable with tests passing. A broken intermediate state means the next failure has two causes.
@@ -82,11 +82,11 @@ Prefer changes that are additive and reversible: new behaviour behind a new path
 
 ## Git
 
-Work on a branch. **Never commit to or push the default branch** — check `conventions.md` for which branch that is, because it is often `develop` or `trunk` rather than `main`, and assuming wrong puts work in the wrong place.
+Work on a branch. **Never commit to or push the default branch**, check `conventions.md` for which branch that is, because it is often `develop` or `trunk` rather than `main`, and assuming wrong puts work in the wrong place.
 
-Match the team's observed branch naming and commit format rather than your own preference. If their commits carry a ticket key, yours must too — some CI setups reject the ones that do not.
+Match the team's observed branch naming and commit format rather than your own preference. If their commits carry a ticket key, yours must too, some CI setups reject the ones that do not.
 
-**Do not commit, push, or open pull requests.** The user does those. When the work is done, leave the tree reviewable and summarise what changed. If they explicitly ask you to commit, do it — and add no co-author or tool-attribution trailers.
+**Do not commit, push, or open pull requests.** The user does those. When the work is done, leave the tree reviewable and summarise what changed. If they explicitly ask you to commit, do it, and add no co-author or tool-attribution trailers.
 
 ## Review
 
@@ -133,4 +133,4 @@ Keep any review notes short and blunt: three to five lines, the problem and the 
 - [ ] Unrelated findings are listed, not fixed
 - [ ] Work is on a branch, never the default branch
 - [ ] Nothing was committed, pushed, or opened as a PR unless explicitly asked
-- [ ] Where the work runs somewhere, that is where it was verified — or the local-only limit was stated
+- [ ] Where the work runs somewhere, that is where it was verified, or the local-only limit was stated

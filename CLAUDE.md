@@ -7,23 +7,24 @@ Conventions for agents working **on this repo**. Skills that ship to users live 
 
 Skills are organised into bucket folders under `skills/`:
 
-- `engineering/` — daily code work
-- `productivity/` — daily non-code workflow
+- `engineering/` for daily code work
+- `go-to-market/` for sales, customer success and marketing work
+- `productivity/` for daily non-code workflow
 
 | Path | What |
 | --- | --- |
 | `skills/<bucket>/<name>/SKILL.md` | a shipped skill |
 | `skills/<bucket>/README.md` | bucket index, grouped user-invoked / model-invoked |
-| `.agents/adding-a-skill.md` | how to add a skill here — a plain doc, **not** a `SKILL.md` |
-| `.agents/adr/` | decision records — why, not what |
+| `.agents/adding-a-skill.md` | how to add a skill here, a plain doc, **not** a `SKILL.md` |
+| `.agents/adr/` | decision records, why, not what |
 | `.agents/invocation.md` | model-invoked vs user-invoked |
-| `skills/<bucket>/<name>/README.md` | human-facing page, own skills only — travels with a standalone install |
+| `skills/<bucket>/<name>/README.md` | human-facing page, own skills only, travels with a standalone install |
 | `.claude-plugin/` | Claude Code plugin + marketplace manifests |
 | `scripts/app-pack.json` | which skills reach the Claude apps, and their app descriptions |
 | `scripts/` | checks, packing, and local linking |
 
 The `skills` CLI discovers skills by walking the tree, so it needs no manifest. The
-Claude Code plugin does not — `.claude-plugin/plugin.json` lists every skill path
+Claude Code plugin does not, `.claude-plugin/plugin.json` lists every skill path
 **explicitly** as an array, because a single path string cannot express two bucket
 folders. **A new skill must be added to that array or the plugin ships without it.**
 CI enforces this.
@@ -32,14 +33,14 @@ CI enforces this.
 
 claude.ai and Claude Desktop install a skill by **uploading a zip**, which makes them a
 third surface with its own rules: the zip's root must be the skill folder, `description` is
-capped at **200 chars**, and there are no slash commands — so `disable-model-invocation`
+capped at **200 chars**, and there are no slash commands, so `disable-model-invocation`
 would ship a skill that never fires, and telling the model to run a sibling skill points at
 nothing.
 
 `scripts/app-pack.json` is the allow-list: an entry means "works with no terminal", and
 carries the short app description. `npm run pack` writes `dist/claude-app/*.zip`, rewriting
 the frontmatter rather than copying it; `npm run check:app` validates without writing. Only
-add a skill there if it needs no shell, no repository, and nothing installed — and prefer
+add a skill there if it needs no shell, no repository, and nothing installed, and prefer
 adapting the source over forking a second copy per surface.
 
 Cowork is the exception worth remembering: it *does* have sub-agents and a sandboxed shell,
@@ -58,7 +59,7 @@ so orchestration skills work there. What it does not have is the user's own mach
 - Run `npm run check`, `npm run check:plugin` and `npm run check:version` before
   pushing. CI runs those plus the cross-reference and documentation assertions.
 - `AGENTS.md` is a **pointer** to this file, for harnesses (Codex and others) that read
-  `AGENTS.md` and never `CLAUDE.md`. Keep it a pointer — never copy content into it.
+  `AGENTS.md` and never `CLAUDE.md`. Keep it a pointer, never copy content into it.
 - A `SKILL.md` anywhere outside `skills/` gets offered to users, because the installer
   walks the whole tree. Repo-only guidance is a plain `.md`. CI fails otherwise.
 - Record non-obvious decisions in `.agents/adr/` rather than in commit messages.
@@ -78,15 +79,15 @@ without their engines once shipped them dead. CI fails on a dangling invocation.
 
 ## Skill anatomy
 
-Substantive skills follow this shape. It is a pattern, not a rigid template — equivalent
-headings are fine when they read better — but the last three are what make a skill change
+Substantive skills follow this shape. It is a pattern, not a rigid template, equivalent
+headings are fine when they read better, but the last three are what make a skill change
 behaviour rather than just describe good practice.
 
 | Section | Holds |
 | --- | --- |
 | Overview | what this does and why it matters, in two or three sentences |
 | When to Use | positive triggers **and** explicit exclusions ("not for …") |
-| The Process | numbered steps. Specific and runnable — "run `npm test`", not "verify the tests" |
+| The Process | numbered steps. Specific and runnable, "run `npm test`", not "verify the tests" |
 | Common Rationalizations | a table of the excuses an agent uses to skip a step, each with why it is wrong |
 | Red Flags | observable signs the skill is being violated right now |
 | Verification | a checklist of exit criteria, each one backed by evidence |
@@ -95,7 +96,7 @@ behaviour rather than just describe good practice.
 would plausibly skip needs a counter-argument sitting next to it, or it gets skipped.
 Write them from real failures, not imagined ones.
 
-Keep `SKILL.md` under 500 lines — it loads in full once the skill activates. Move
+Keep `SKILL.md` under 500 lines, it loads in full once the skill activates. Move
 reference material over ~100 lines into a supporting file beside it and link one level
 deep. Prefer a script over a long inline code block: running a script costs no context,
 an inline block is paid for on every load.
@@ -107,7 +108,7 @@ delete it.
 
 `name` must be kebab-case and match the directory. `description` is the only thing an
 agent sees when deciding whether to load a skill: say what it does, then when to use it.
-Write **trigger conditions** ("Use when …"), not a summary of the process — an agent that
+Write **trigger conditions** ("Use when …"), not a summary of the process, an agent that
 can read the process in the description may follow that summary instead of loading the
 skill. `npm run check` enforces both plus a 40-char floor, and handles plain, quoted, and
 folded (`>-`) scalar styles.
@@ -120,4 +121,4 @@ See [.agents/invocation.md](./.agents/invocation.md) for model-invoked vs user-i
 a `git pull` updates the installed copies and editing an installed skill edits the repo.
 Re-run after adding or renaming a skill.
 
-Do **not** `cp` skills into `~/.claude/skills/` — two copies drift silently.
+Do **not** `cp` skills into `~/.claude/skills/`, two copies drift silently.

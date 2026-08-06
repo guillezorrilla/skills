@@ -1,6 +1,6 @@
 {
   "name": "guillezorrilla-skills",
-  "version": "1.8.0",
+  "version": "1.9.0",
   "displayName": "Guille's Skills",
   "description": "Agent skills for engineering and productivity \u2014 frontier-model orchestration, TDD, systematic debugging, codebase design, grilling a plan before you build it.",
   "author": {
@@ -33,6 +33,11 @@
     "./skills/engineering/planning-and-task-breakdown",
     "./skills/engineering/setup-team-conventions",
     "./skills/engineering/tdd",
+    "./skills/go-to-market/account-enrichment",
+    "./skills/go-to-market/cold-outreach",
+    "./skills/go-to-market/icp-lead-generation",
+    "./skills/go-to-market/proactive-customer-outreach",
+    "./skills/go-to-market/setup-gtm-workflow",
     "./skills/productivity/grill-me",
     "./skills/productivity/grilling",
     "./skills/productivity/handoff"

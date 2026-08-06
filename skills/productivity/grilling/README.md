@@ -5,7 +5,7 @@ Interrogate a plan until nothing is left silently assumed.
 ## What it does
 
 Turns an underspecified ask into a confirmed statement of intent, by asking one question
-at a time — each carrying your recommended answer and an honest confidence figure —
+at a time, each carrying your recommended answer and an honest confidence figure.
 ordered so no question depends on an answer you have not heard yet.
 
 Four things make it work where a generic "let me ask some clarifying questions" does not:
@@ -15,8 +15,8 @@ Four things make it work where a generic "let me ask some clarifying questions" 
 - **A recommendation attached to every question.** People react to a concrete wrong answer
   far faster than they compose a right one, and a stated guess exposes the assumption the
   interview exists to find.
-- **Facts are never asked for.** Anything the environment can answer — what the config
-  says, what the code does, what the last release contained — gets looked up, not
+- **Facts are never asked for.** Anything the environment can answer, what the config
+  says, what the code does, what the last release contained, gets looked up, not
   delegated back to you.
 - **A checkable stop test.** "Can I predict your reaction to the next three questions I
   would ask?" Not a feeling about whether we have talked enough.
@@ -25,8 +25,8 @@ Four things make it work where a generic "let me ask some clarifying questions" 
 
 Before building anything whose shape is not settled: a feature with fuzzy requirements, a
 design with two defensible directions, an infrastructure change where the failure mode
-matters. Also whenever you notice a request is conventional rather than specific — "a
-dashboard", "make it faster" — because unpacking the convention is exactly where the wrong
+matters. Also whenever you notice a request is conventional rather than specific, "a
+dashboard", "make it faster", because unpacking the convention is exactly where the wrong
 assumption gets made.
 
 Skip it for a rename, a typo, a one-line fix, or anything you have already decided and
@@ -38,7 +38,7 @@ underspecified ask there is a blocker to report rather than a gap to fill.
 ## Common questions
 
 **Why one question at a time?** Because a batch gets skimmed, and the third question
-usually depends on the answer to the first — asking them together locks in a framing that
+usually depends on the answer to the first, asking them together locks in a framing that
 was about to change. The ordering comes from a dependency tree: only decisions whose
 prerequisites are settled are eligible to be asked.
 
@@ -50,8 +50,8 @@ visibly wrong often enough that disagreeing feels safe.
 and corrects, without ceremony. An interview that never revises its own premise was
 theatre.
 
-**How does it end?** With a six-line restate — outcome, user, why now, success,
-constraint, out of scope — and an explicit yes. "Sounds good", "whatever you think", and
+**How does it end?** With a six-line restate, outcome, user, why now, success.
+constraint, out of scope, and an explicit yes. "Sounds good", "whatever you think", and
 silence are all treated as *not yes*, because each one usually means the alignment isn't
 real.
 
@@ -64,6 +64,6 @@ what was never going to be built.
 - Nobody asks you to go and check what a config file says.
 - The confidence figure visibly moves as the session goes on.
 - It tells you when it was wrong, unprompted.
-- The restate contains something you had not said out loud — and occasionally something
+- The restate contains something you had not said out loud, and occasionally something
   you had not realised you wanted.
 - It stops when the decisions are made, not when it runs out of questions.

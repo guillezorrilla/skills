@@ -1,6 +1,6 @@
 {
   "name": "guillezorrilla-skills",
-  "version": "1.8.0",
+  "version": "1.9.0",
   "description": "Agent skills for engineering and productivity — grilling a plan before you build it, TDD, systematic debugging, codebase design, team-convention detection, and frontier-model orchestration.",
   "author": {
     "name": "Guillermo Zorrilla",

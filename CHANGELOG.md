@@ -1,5 +1,46 @@
 # @guillezorrilla/skills
 
+## 1.9.0
+
+### Minor Changes
+
+- Five go-to-market skills, in a new `go-to-market` bucket, all of them installable in the
+  Claude apps without a terminal.
+
+  - `setup-gtm-workflow` records how a team already works before anything else runs: which
+    CRM, notes tool and support desk are actually connected, their real pipeline stage names,
+    who owns which account, where suppression lives, who approves a send, and which regions
+    their recipients sit in. It records and never redesigns, and the other four read what it
+    writes, so they fit an existing process instead of inventing one.
+  - `icp-lead-generation` takes the profile the team already trusts and converts it into
+    filters that can come back false, then proves each account fits with a source and a date.
+    It keeps the rejects, which is the only evidence that the profile itself is wrong, and it
+    will not collect from behind a login or against a site's terms.
+  - `account-enrichment` builds a one-page dossier aimed at one decision, is there a reason to
+    write to them now, and checks the CRM, the inbox and the call notes before the open web.
+    Every line is labelled verified, internal, inferred or unknown, and nothing said in
+    confidence is set up to be quoted back to the customer.
+  - `cold-outreach` writes a first touch on one dated fact, with one small ask, a graceful way
+    to say no, and a real identity with a working opt-out. It gates on whether a dated fact
+    exists at all, because the answer to nothing-to-say is not a cleverer opener.
+  - `proactive-customer-outreach` learns the team's voice from messages that actually got
+    replies rather than from a description of the voice, uses account numbers with dates, and
+    refuses to send a cheerful milestone note while that customer has an open escalation.
+
+  One rule runs through all five: every fact that reaches a prospect or a customer carries a
+  source and a date, or it does not get sent. Invented familiarity is how AI-written outreach
+  fails, and the reader is the one person who can check the claim instantly.
+
+  `proactive-customer-outreach` had one behaviour corrected before release: its kill switch was
+  right to stop a milestone note during an open escalation, but it then treated the whole message
+  as out of scope and returned a template of placeholders. The switch now redirects rather than
+  refuses. It writes the honest message instead, leading with what is actually happening and
+  owning anything promised and not delivered, and blanks are allowed only where nobody knows the
+  answer yet.
+
+  Also in this release: em dashes and en dashes are gone from every skill and document, along
+  with the comma soup that replacing them mechanically produced.
+
 ## 1.8.0
 
 ### Minor Changes

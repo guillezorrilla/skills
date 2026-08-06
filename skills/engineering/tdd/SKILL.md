@@ -1,6 +1,6 @@
 ---
 name: tdd
-description: Drives implementation from tests written first, at seams agreed before any test exists — one failing test, the smallest code that passes it, repeat. Use when building a feature or fixing a bug test-first, when a bug needs a test that reproduces it before the fix, or when the user mentions red-green-refactor or asks for tests.
+description: Drives implementation from tests written first, at seams agreed before any test exists, one failing test, the smallest code that passes it, repeat. Use when building a feature or fixing a bug test-first, when a bug needs a test that reproduces it before the fix, or when the user mentions red-green-refactor or asks for tests.
 ---
 
 # TDD
@@ -9,7 +9,7 @@ description: Drives implementation from tests written first, at seams agreed bef
 
 TDD is not "write tests as well". It is letting a failing test decide what to build next, one slice at a time, so the code that exists is the code some test demanded.
 
-The discipline earns its keep in two places. It stops you building things nothing needed, because nothing failed without them. And it produces tests that can actually fail, which is the only kind worth having — a test you never watched go red is a guess that it works.
+The discipline earns its keep in two places. It stops you building things nothing needed, because nothing failed without them. And it produces tests that can actually fail, which is the only kind worth having, a test you never watched go red is a guess that it works.
 
 ## When to Use
 
@@ -21,7 +21,7 @@ The discipline earns its keep in two places. It stops you building things nothin
 **Not for:**
 
 - Exploratory work where you do not yet know what the interface should be. Prototype first, throw it away, then TDD the real thing.
-- Code with no stable seam to test at. Find the seam first — `codebase-design` has the vocabulary.
+- Code with no stable seam to test at. Find the seam first, `codebase-design` has the vocabulary.
 - Pure configuration, generated files, or a one-line change to a constant.
 - Chasing coverage. Coverage is a byproduct here, never the goal.
 
@@ -29,24 +29,24 @@ The discipline earns its keep in two places. It stops you building things nothin
 
 Find out how this project runs tests before you write one:
 
-- The runner and its config — and whether unit and integration tests run differently.
+- The runner and its config, and whether unit and integration tests run differently.
 - How to run **one file**, and one test within it. You will do this dozens of times; needing the full suite each cycle kills the loop.
 - What CI runs, since that is the authority on green. If the project records its commands (`docs/agents/verify.md`), use those.
 - Where tests live and what they are named, so yours goes where people look for it.
 
-A test written for the wrong runner or in the wrong directory is invisible, which is worse than absent — the suite passes and nobody knows the behaviour is unpinned.
+A test written for the wrong runner or in the wrong directory is invisible, which is worse than absent, the suite passes and nobody knows the behaviour is unpinned.
 
 ## Agree the seam first
 
 A **seam** is the public boundary you observe behaviour through, without reaching inside. Tests live at seams. Never at internals.
 
-**Write down which seams are under test and confirm them before writing a test.** You cannot test everything, and the choice of where to test is the choice of what the tests will protect. Made silently, it defaults to whatever was easiest to reach — usually a private function, which pins the implementation instead of the behaviour.
+**Write down which seams are under test and confirm them before writing a test.** You cannot test everything, and the choice of where to test is the choice of what the tests will protect. Made silently, it defaults to whatever was easiest to reach, usually a private function, which pins the implementation instead of the behaviour.
 
 Ask: what is the public interface here, and which seams should we hold?
 
 ## The Cycle
 
-### Red — one failing test
+### Red: one failing test
 
 Write one test for one behaviour, at an agreed seam. Run it. **Watch it fail, and read the failure.**
 
@@ -54,7 +54,7 @@ The failure message is data. It should fail because the behaviour is missing, no
 
 A test you never saw fail is not a test. It is an assumption with syntax.
 
-### Green — the smallest thing that passes
+### Green: the smallest thing that passes
 
 Write only enough code to pass this test. No anticipation of the next test, no speculative parameters, no error handling for a case no test describes.
 
@@ -62,7 +62,7 @@ Run it. **Watch it pass**, and confirm the other tests still do.
 
 If passing this test needed more code than the test justifies, the test was too big. Split it.
 
-### Refactor — separate step, still green
+### Refactor: separate step, still green
 
 Now improve the shape, with the tests as your net. Rename, extract, collapse duplication. Run the tests after each change.
 
@@ -72,7 +72,7 @@ Refactoring is not part of red-green. Doing it while a test is red means you can
 
 One seam, one test, one minimal implementation, then repeat.
 
-Do not write all the tests and then all the code. Bulk-written tests verify *imagined* behaviour: they pin the shape you guessed rather than the behaviour that emerges, they go insensitive to real change, and they commit you to a test structure before you understand the implementation. Each test is a tracer bullet — it should respond to what the last cycle taught you.
+Do not write all the tests and then all the code. Bulk-written tests verify *imagined* behaviour: they pin the shape you guessed rather than the behaviour that emerges, they go insensitive to real change, and they commit you to a test structure before you understand the implementation. Each test is a tracer bullet, it should respond to what the last cycle taught you.
 
 ## Bug fixes: prove it first
 
@@ -84,19 +84,19 @@ A bug fix has a stricter version of the cycle, and skipping it is how the same b
 4. Watch the test pass.
 5. Run the original reproduction from the report, not just your test.
 
-If you cannot write a failing test, you have not localised the bug — go back to `diagnosing-bugs`. "Fixed but untestable" usually means "changed something and the symptom moved".
+If you cannot write a failing test, you have not localised the bug, go back to `diagnosing-bugs`. "Fixed but untestable" usually means "changed something and the symptom moved".
 
-**If there is no correct seam for the regression test, that is itself the finding.** A test at too shallow a seam gives false confidence: it passes while the real bug pattern — the one involving several callers, or the chain that triggered it — remains reachable. Say the architecture is preventing the bug from being pinned, rather than writing the test that cannot catch it.
+**If there is no correct seam for the regression test, that is itself the finding.** A test at too shallow a seam gives false confidence: it passes while the real bug pattern, the one involving several callers, or the chain that triggered it, remains reachable. Say the architecture is preventing the bug from being pinned, rather than writing the test that cannot catch it.
 
 ## What a good test looks like
 
 **Test state, not interactions.** Assert on the result, not on which collaborator got called. A test that verifies call order breaks on every refactor while behaviour is unchanged, which teaches everyone to stop trusting the suite.
 
-**Real implementations over mocks.** Use the real thing wherever it is fast and deterministic — an in-memory store, a temp directory, a local fixture. Mock at the edge of your control: the network, the clock, the payment provider. Every mock is an assumption that the real thing behaves as you imagined.
+**Real implementations over mocks.** Use the real thing wherever it is fast and deterministic, an in-memory store, a temp directory, a local fixture. Mock at the edge of your control: the network, the clock, the payment provider. Every mock is an assumption that the real thing behaves as you imagined.
 
 **DAMP over DRY.** Tests optimise for being read during a failure at 3am, not for having no duplication. A little repetition beats a helper that hides what is being set up. If understanding a failing test needs you to go and read three fixture functions, the test has concealed the thing it was proving.
 
-**Arrange, act, assert** — visibly, in that order, with the act as one line. If the act needs five lines, the interface is telling you something.
+**Arrange, act, assert**: visibly, in that order, with the act as one line. If the act needs five lines, the interface is telling you something.
 
 **One concept per test.** Several assertions about the same behaviour are fine. Assertions about three unrelated behaviours are three tests, and you want to know which one broke from the name alone.
 
@@ -104,11 +104,11 @@ If you cannot write a failing test, you have not localised the bug — go back t
 
 ## Anti-patterns
 
-- **Implementation-coupled** — mocks internal collaborators, reaches private methods, or asserts through a side channel like querying the database instead of using the interface. The tell: refactoring breaks it while behaviour is unchanged.
-- **Tautological** — the expected value is recomputed the way the code computes it (`expect(add(a,b)).toBe(a+b)`, a snapshot derived by hand from the same logic). It passes by construction and can never disagree with the code. Expected values come from an independent source: a worked example, a known-good literal, the spec.
-- **Assertion-free** — the test runs the code and asserts nothing, or asserts only that nothing threw. It passes for any behaviour.
-- **Testing the framework** — verifying that the ORM saves or the router routes. Not your behaviour, not your test.
-- **The retry** — a test wrapped in retries to stop it flaking. The flake is a finding; the retry hides it.
+- **Implementation-coupled**: mocks internal collaborators, reaches private methods, or asserts through a side channel like querying the database instead of using the interface. The tell: refactoring breaks it while behaviour is unchanged.
+- **Tautological**: the expected value is recomputed the way the code computes it (`expect(add(a,b)).toBe(a+b)`, a snapshot derived by hand from the same logic). It passes by construction and can never disagree with the code. Expected values come from an independent source: a worked example, a known-good literal, the spec.
+- **Assertion-free**: the test runs the code and asserts nothing, or asserts only that nothing threw. It passes for any behaviour.
+- **Testing the framework**: verifying that the ORM saves or the router routes. Not your behaviour, not your test.
+- **The retry**: a test wrapped in retries to stop it flaking. The flake is a finding; the retry hides it.
 
 ## Report the loop honestly
 
@@ -154,7 +154,7 @@ If some tests fail, say so with the output rather than summarising around it. A 
 - [ ] The seams under test were written down and confirmed before the first test
 - [ ] Every test was observed failing before the code that passes it existed
 - [ ] Each failure was read, and failed for the intended reason
-- [ ] Implementation was the minimum the test demanded — no speculative code
+- [ ] Implementation was the minimum the test demanded, no speculative code
 - [ ] Refactoring happened as a separate step, with tests green throughout
 - [ ] For a bug fix: a test failed *because of the bug*, and the report's original reproduction was re-run after the fix
 - [ ] Where no correct seam existed for a regression test, that was stated rather than worked around

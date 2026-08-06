@@ -1,6 +1,6 @@
 ---
 name: grill-me
-description: Stress-test a plan, design, or decision before building it — a relentless interview that surfaces every silent assumption.
+description: Stress-test a plan, design, or decision before building it, a relentless interview that surfaces every silent assumption.
 disable-model-invocation: true
 ---
 

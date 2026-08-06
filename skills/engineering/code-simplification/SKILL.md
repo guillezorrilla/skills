@@ -1,6 +1,6 @@
 ---
 name: code-simplification
-description: Reduces complexity in code without changing what it does — working down a ladder from "does this need to exist at all" through standard-library and platform features to the smallest thing that works. Use after a feature works and the implementation feels heavier than the problem, when review flags complexity, or when someone asks to simplify, delete, or de-bloat code. Not for code you do not yet understand.
+description: Reduces complexity in code without changing what it does, working down a ladder from "does this need to exist at all" through standard-library and platform features to the smallest thing that works. Use after a feature works and the implementation feels heavier than the problem, when review flags complexity, or when someone asks to simplify, delete, or de-bloat code. Not for code you do not yet understand.
 ---
 
 # Code Simplification
@@ -9,7 +9,7 @@ description: Reduces complexity in code without changing what it does — workin
 
 The goal is not fewer lines. It is code the next person understands faster, with less to hold in their head. Fewer lines is usually a side effect, and occasionally the wrong answer.
 
-Behaviour is frozen. Every input produces the same output, every error path behaves the same, every side effect happens in the same order. A change that alters behaviour is not a simplification, it is a rewrite wearing a simplification's clothes — and it will be reviewed as if nothing changed, which is how simplification passes bugs into main.
+Behaviour is frozen. Every input produces the same output, every error path behaves the same, every side effect happens in the same order. A change that alters behaviour is not a simplification, it is a rewrite wearing a simplification's clothes, and it will be reviewed as if nothing changed, which is how simplification passes bugs into main.
 
 ## When to Use
 
@@ -27,7 +27,7 @@ Behaviour is frozen. Every input produces the same output, every error path beha
 
 ## The Ladder
 
-Work down it and stop at the first rung that holds. Two rungs both work? Take the higher one and move on — this is a reflex, not a research project.
+Work down it and stop at the first rung that holds. Two rungs both work? Take the higher one and move on, this is a reflex, not a research project.
 
 1. **Does this need to exist at all?** Speculative generality, a config for a value that never changes, an interface with one implementation, a factory for one product, error handling for an impossible state. Delete it and say so in one line.
 2. **Does the standard library do it?** Use it. Hand-rolled date maths, deep-clone, group-by and debounce are the usual suspects.
@@ -70,7 +70,7 @@ Answer these, and use `git log`/`git blame` on the block rather than guessing:
 - What is this responsible for? What calls it, and what does it call?
 - What are the edge cases and error paths?
 - Which tests pin the current behaviour?
-- Why might it have been written this way — a performance fix, a platform quirk, a bug nobody documented?
+- Why might it have been written this way, a performance fix, a platform quirk, a bug nobody documented?
 
 A fence across a road with no obvious purpose usually had one. Find it, *then* decide whether it still applies.
 
@@ -78,9 +78,9 @@ A fence across a road with no obvious purpose usually had one. Find it, *then* d
 
 Run the tests and record the result. You cannot claim behaviour is preserved without a baseline, and "the tests were passing" from memory is not a baseline.
 
-If the code has no tests, say so before touching it. Simplifying untested code is a bet with no way to settle it — either add a test that pins current behaviour first, or tell the user the risk and let them decide.
+If the code has no tests, say so before touching it. Simplifying untested code is a bet with no way to settle it, either add a test that pins current behaviour first, or tell the user the risk and let them decide.
 
-### 3. Match the codebase, not your taste
+### 3. Match the codebase: not your taste
 
 Read the project's conventions and the neighbouring code before changing style. Match import ordering, declaration style, naming, error handling, and how deeply types are annotated.
 
@@ -109,7 +109,7 @@ Re-run the same tests, unmodified, and paste the result.
 When you deliberately leave something simple that has a known ceiling, say so in a comment naming the ceiling and the upgrade path:
 
 ```
-# global lock — switch to per-account locks if throughput matters
+# global lock, switch to per-account locks if throughput matters
 ```
 
 A shortcut with its limit written down is a decision. The same shortcut unmarked reads as ignorance, and the next person either "fixes" it or trusts it too far.
@@ -141,7 +141,7 @@ The failure mode of this skill is going too far:
 ## Red Flags
 
 - Editing a test file during a simplification pass.
-- No recorded before-state — no test run captured prior to the change.
+- No recorded before-state, no test run captured prior to the change.
 - The diff touches files unrelated to what prompted the work.
 - Deleting a branch, guard, or `catch` you have not explained the purpose of.
 - Reaching for a new dependency mid-simplification.

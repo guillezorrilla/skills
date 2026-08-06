@@ -1,6 +1,6 @@
 ---
 name: adding-a-skill
-description: Use in the guillezorrilla/skills repo whenever adding, editing, renaming, removing, documenting, or validating a skill — covers the skill directory, frontmatter contract, docs page, README row, version bump, and how to test both install routes before pushing.
+description: Use in the guillezorrilla/skills repo whenever adding, editing, renaming, removing, documenting, or validating a skill, covers the skill directory, frontmatter contract, docs page, README row, version bump, and how to test both install routes before pushing.
 ---
 
 # Adding a skill
@@ -18,7 +18,7 @@ $EDITOR skills/my-skill/SKILL.md
 
 Then, in the same change:
 
-1. `skills/<bucket>/my-skill/README.md` — human-facing page (see the template below). Co-located so it travels when someone installs this skill alone.
+1. `skills/<bucket>/my-skill/README.md`, human-facing page (see the template below). Co-located so it travels when someone installs this skill alone.
 2. A row in the README skills table.
 3. Bump `version` in **both** `package.json` and `.claude-plugin/plugin.json`.
    Subscribers on the plugin route see nothing until the plugin version changes.
@@ -38,7 +38,7 @@ the skill. A summary ("Helps with testing") never fires; trigger conditions ("Us
 when the user reports a failing test, mentions flakiness, or asks to…") do. Decide
 model-invoked vs user-invoked per [../../.agents/invocation.md](../invocation.md).
 
-## Verify — all three, in order
+## Verify: all three, in order
 
 ```bash
 npm run check          # frontmatter on every shipped skill
@@ -46,7 +46,7 @@ npm run check:plugin   # claude plugin validate . --strict
 npm run link           # re-link into ~/.claude/skills and ~/.agents/skills
 ```
 
-`check:plugin` is strict, so warnings fail — a missing `version` counts.
+`check:plugin` is strict, so warnings fail, a missing `version` counts.
 
 Then exercise the real install path from a scratch directory, because a skill that
 validates can still fail to install:
@@ -59,13 +59,13 @@ npx skills@latest add <path-to-this-repo> --skill my-skill --agent claude-code
 ## Docs page template
 
 Four sections, in this order: **What it does**, **When to reach for it**, **Common
-questions**, **It's working if**. The last one is the useful one — it gives the reader
+questions**, **It's working if**. The last one is the useful one, it gives the reader
 an observable test rather than a promise.
 
 ## Removing or renaming
 
 Renaming a directory renames the skill; the frontmatter `name` must follow or
 `npm run check` fails. Also update the README row, and any
-prose invocation from another skill. Installed copies do not rename themselves —
+prose invocation from another skill. Installed copies do not rename themselves.
 consumers on the `skills add` route keep the old directory until they re-run it, so
 treat a rename as a breaking change and say so in the changelog.

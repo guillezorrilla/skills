@@ -2,8 +2,8 @@
 
 ## What it does
 
-Detects how a team actually works and records it in `docs/agents/` so every skill — and
-every teammate's agent — behaves the same way. Run once per repo.
+Detects how a team actually works and records it in `docs/agents/` so every skill, and
+every teammate's agent, behaves the same way. Run once per repo.
 
 It answers five questions:
 
@@ -22,7 +22,7 @@ You confirm; you don't fill in a questionnaire.
 
 ## When to reach for it
 
-Once, when you start working in a repo with other people in it — before the first time
+Once, when you start working in a repo with other people in it, before the first time
 you ask an agent to implement something. Again only if the team changes tooling.
 
 Skip it on a solo project with no tracker and no CI; there is nothing to detect and the
@@ -32,12 +32,12 @@ defaults in each skill already fit.
 
 **Why not just put this in CLAUDE.md by hand?** You can, and the skill writes a pointer
 block there anyway. The value is that it reads the team's actual history instead of your
-memory of it — the branch convention you *think* the team uses and the one in
+memory of it, the branch convention you *think* the team uses and the one in
 `git branch -r` are different surprisingly often.
 
 **Does it change my repo?** It writes `docs/agents/*.md` and one block in
 `CLAUDE.md`/`AGENTS.md`. Nothing else. It will not create a PR template, tracker labels,
-CI config or a CONTRIBUTING file — in an established repo those absences are usually
+CI config or a CONTRIBUTING file, in an established repo those absences are usually
 deliberate. It offers; you decide.
 
 **Why does it read git history instead of CONTRIBUTING.md?** Because documentation
@@ -56,6 +56,6 @@ one reviews happen on, because that is not inferable.
 - An agent opens a branch named the way your team names branches, without being told.
 - Nobody has to say "we use merge requests, not pull requests" a second time.
 - "Done" means the same commands your CI runs, not whatever the README said in 2023.
-- A teammate can read `docs/agents/` in a PR and correct it — the conventions are
+- A teammate can read `docs/agents/` in a PR and correct it, the conventions are
   reviewable, not buried in someone's local config.
 - It tells you something you didn't know about your own repo. It usually does.
