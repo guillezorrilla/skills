@@ -1,6 +1,6 @@
 {
   "name": "@guillezorrilla/skills",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "private": true,
   "type": "module",
   "description": "Agent skills for engineering and productivity — grilling, TDD, systematic debugging, codebase design, frontier-model orchestration.",

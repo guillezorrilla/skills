@@ -40,6 +40,8 @@ When the shape of that interface is itself in question — how deep the module i
 
 ## Reporting the loop
 
+If `docs/agents/verify.md` exists, its commands are the ones that count — they were taken from the team's CI, so a suite that passes some other way still fails review.
+
 Paste the command and its result. "Tests pass" is not a report; `2 passed, 0 failed` with the invocation above it is. If some tests fail, say so with the output rather than summarising around it — a partial pass is a failure until you say which part.
 
 Judge tests by **running them**, not by type-checking them. Many projects deliberately exclude test files from their type-check configuration, so a clean typecheck says nothing about whether tests pass, and type errors reported inside test files may be an artifact of that configuration rather than a real defect. Run the test command; that is the signal.

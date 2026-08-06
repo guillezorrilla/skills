@@ -1,5 +1,27 @@
 # @guillezorrilla/skills
 
+## 1.2.0
+
+### Minor Changes
+
+- Add `setup-team-conventions` — run once per repo to detect how a team actually works and
+  record it in `docs/agents/` for the other skills to read.
+
+  It detects rather than asks: the forge from `git remote` (GitHub, Bitbucket, GitLab,
+  Azure DevOps — each with its own CLI, its own CI config path, and its own noun for a
+  change request), the tracker independently of the forge from ticket keys in real commits,
+  branch and commit conventions from observed history rather than from `CONTRIBUTING.md`,
+  the verify commands from CI rather than the README, and review rules from `CODEOWNERS`
+  and branch protection. Unknowns are recorded as unknown, because a confident wrong value
+  is worse than a gap.
+
+  It records only. It will not create PR templates, tracker labels, CI config or
+  CONTRIBUTING files — in an established repo those absences are usually deliberate.
+
+  `implement`, `tdd`, `diagnosing-bugs` and `handoff` now read `docs/agents/` when present:
+  the default branch and commit format, the commands that define done, and the ticket base
+  URL for real links in a handoff.
+
 ## 1.1.1
 
 ### Patch Changes

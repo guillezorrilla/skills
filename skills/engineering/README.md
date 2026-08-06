@@ -4,6 +4,7 @@ Daily code work.
 
 **User-invoked**
 
+- [`setup-team-conventions`](./setup-team-conventions/SKILL.md) — run first in a team repo: detect the forge, tracker, branch/commit conventions, verify commands and review rules, and record them in `docs/agents/`
 - [`grill-with-docs`](./grill-with-docs/SKILL.md) — grilling session that writes ADRs and a glossary as it goes
 - [`implement`](./implement/SKILL.md) — build from a spec or tickets; scope discipline, evidence before done, never commits for you
 - [`improve-codebase-architecture`](./improve-codebase-architecture/SKILL.md) — scan for deepening opportunities, report visually, grill the one you pick

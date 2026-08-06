@@ -78,6 +78,7 @@ find the exact identifier for a harness.
 
 | Skill | What it does |
 | --- | --- |
+| [`setup-team-conventions`](./skills/engineering/setup-team-conventions/SKILL.md) · [docs](./docs/setup-team-conventions.md) | **Run this first in a team repo.** Detects the forge (GitHub/Bitbucket/GitLab/Azure), the tracker (Jira/Linear/forge issues), branch and commit conventions, the real verify commands and the review rules — from git history and CI, not from documentation — and records them in `docs/agents/` for every other skill to read. |
 | [`grill-me`](./skills/productivity/grill-me/SKILL.md) | Relentless interview to sharpen a plan before you build it. One question at a time, each with a recommended answer, each grounded in something already checked. |
 | [`grill-with-docs`](./skills/engineering/grill-with-docs/SKILL.md) | Same interview, writing ADRs and a glossary as decisions land. |
 | [`implement`](./skills/engineering/implement/SKILL.md) | Build from a spec or tickets. Scope discipline, evidence before claiming done, branch-only, and it never commits for you. |

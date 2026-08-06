@@ -25,6 +25,13 @@ The MIT notice below travels with them, per the licence.
 
 `engineering/efficient-fable`.
 
+`engineering/setup-team-conventions` is original prose, but follows the
+explore → present → confirm → write shape of upstream's `setup-matt-pocock-skills`, and
+credits it in a footer. It was rewritten around multi-forge team detection: GitHub,
+Bitbucket, GitLab and Azure DevOps; a tracker detected independently of the forge; and
+branch, commit, verify and review conventions read out of git history and CI rather than
+asked.
+
 ---
 
 MIT License

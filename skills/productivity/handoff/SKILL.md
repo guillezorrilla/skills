@@ -9,7 +9,7 @@ Write a handoff document summarising the current conversation so a fresh agent c
 
 Include a "suggested skills" section in the document, which suggests skills that the agent should invoke.
 
-Do not duplicate content already captured in other artifacts (specs, plans, ADRs, issues, commits, diffs). Reference them by path or URL instead.
+Do not duplicate content already captured in other artifacts (specs, plans, ADRs, issues, commits, diffs). Reference them by path or URL instead. If `docs/agents/tracker.md` and `docs/agents/forge.md` exist, use them to build real links — the ticket base URL and the repo slug are recorded there — so the next agent gets a URL it can open rather than a bare key.
 
 Redact any sensitive information, such as API keys, passwords, or personally identifiable information.
 

@@ -6,6 +6,8 @@ disable-model-invocation: true
 
 Implement the work described by the user in the spec or tickets.
 
+**First, read `docs/agents/` if it exists** — `conventions.md` for the default branch, branch naming and commit format, `verify.md` for the commands that define done, `review.md` for who approves, `forge.md` for whether this team says "pull request" or "merge request". Those files are the team's answer and override the defaults below. If the directory is absent, run `/setup-team-conventions` or fall back to the defaults here and say which you did.
+
 Use /tdd where possible, at pre-agreed seams.
 
 Run typechecking regularly, single test files regularly, and the full test suite once at the end.
@@ -27,7 +29,7 @@ If part of the spec turns out to be blocked or wrong, finish everything else in 
 
 ## Git
 
-Work on a branch. Never commit to or push the default branch (`main`/`master`/`develop`), even for a one-line change.
+Work on a branch. Never commit to or push the default branch — check `docs/agents/conventions.md` for which branch that is, because it is often `develop` or `trunk` rather than `main`, and assuming wrong is how work lands in the wrong place. Match the team's observed branch naming and commit format rather than your own preference; if their commits carry a ticket key, yours must too or their CI may reject it.
 
 **Do not commit, push, or open pull requests.** The user runs those themselves. When implementation is complete, leave the working tree in a reviewable state and summarise what changed — they will take it from there. If they explicitly ask you to commit, do it, and add no co-author or tool-attribution trailers.
 

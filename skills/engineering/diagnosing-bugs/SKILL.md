@@ -140,6 +140,7 @@ If a correct seam exists:
 Required before declaring done:
 
 - [ ] Original repro no longer reproduces (re-run the Phase 1 loop) — **and the Phase 0 reproduction, using the user's exact steps**
+- [ ] The team's own verify commands pass, if `docs/agents/verify.md` records them
 - [ ] Regression test passes (or absence of seam is documented)
 - [ ] All `[DEBUG-...]` instrumentation removed (`grep` the prefix)
 - [ ] Throwaway prototypes deleted (or moved to a clearly-marked debug location)
