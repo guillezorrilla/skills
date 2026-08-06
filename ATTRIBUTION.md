@@ -1,62 +1,40 @@
-# Attribution
+# Influences
 
-Most skills here originate from **[mattpocock/skills](https://github.com/mattpocock/skills)**, MIT licensed, Copyright (c) 2026 Matt Pocock. They have been vendored and adapted; the upstream work is the substance, the adaptations are working conventions layered on top.
+Every skill here is original prose. Nothing in `skills/` is a copy, and nothing carries a
+licence obligation to anyone else — but the ideas came from reading widely, and pretending
+otherwise would be dishonest.
 
-The MIT notice below travels with them, per the licence.
+The repo started as vendored skills with attribution footers and has since been rewritten
+from scratch, one skill at a time. This file records where the thinking came from.
 
-## Vendored and adapted
+## Sources read
 
-| Skill | Adapted how |
-| --- | --- |
-| `engineering/codebase-design` | Added placement-is-design and prefer-the-systemic-version sections; subagent fan-out in one message rather than waves |
-| `engineering/diagnosing-bugs` | Added Phase 0 — reproduce with the reporter's exact steps and be willing to conclude "no bug"; run probes yourself rather than asking a human to check a console; committed ≠ deployed; fix only the reported defect |
-| `engineering/grill-with-docs` | Unchanged wrapper; `domain-modeling` is vendored alongside it so it works standalone. Its engine, `grilling`, has since been rewritten from scratch — see below |
-| `engineering/implement` | No longer commits — the human owns commits, pushes and PRs; branch-only, never the default branch; scope discipline; verification-with-evidence before claiming done; additive/fail-safe for infra |
-| `engineering/improve-codebase-architecture` | Added what-counts-as-a-good-candidate (systemic over bolt-on) and an explicit does-not-rewrite-working-systems boundary; fan-out in one message |
-| `engineering/tdd` | Added watch-red-watch-green, report-with-command-output, judge tests by running not type-checking, don't absorb pre-existing failures |
-| `productivity/handoff` | Added the verified / assumed / left-out-on-purpose / blocked split, and that committed-not-deployed belongs under assumed |
+- **[mattpocock/skills](https://github.com/mattpocock/skills)** (MIT) — the first version of
+  this repo vendored eight of these directly. Ideas that survived the rewrite: the design
+  tree and *frontier* for ordering questions in `grilling`; the deep-module vocabulary and
+  the deletion test in `codebase-design`; the seam-agreement rule and the tautological-test
+  anti-pattern in `tdd`; the feedback-loop-first discipline in `diagnosing-bugs`; the
+  explore → present → confirm → write shape of `setup-team-conventions`; and the
+  three-tests-for-an-ADR in `domain-modeling`.
+- **[addyosmani/agent-skills](https://github.com/addyosmani/agent-skills)** (MIT) — the skill
+  **anatomy** this repo now follows: Overview, When to Use, Process, Common Rationalizations,
+  Red Flags, Verification. Rationalizations and Red Flags are the load-bearing idea and the
+  single biggest improvement to every skill here. Also: DAMP-over-DRY in tests, the
+  prove-it-first pattern for bug fixes, stop-the-line, error output as untrusted data, the
+  context hierarchy, and the five-axis review.
+  `interview-me` specifically contributed the confidence number, the guess attached to every
+  question, the want-versus-should-want probe, and the predict-the-next-three stop test.
+- **[BuilderIO/skills](https://github.com/BuilderIO/skills)** (MIT) — the shape of
+  `efficient-fable`: where-the-orchestrator-shines, delegation pattern, handoff packets,
+  vetting delegated work, claims. Also the convention of a README beside each skill.
+- **Published ideas, credited where used** — deep modules (Ousterhout), seams (Feathers),
+  Chesterton's fence, and the verification-is-the-bottleneck argument (Osmani).
 
-## Vendored as dependencies, unmodified
+## What is not from anywhere
 
-`engineering/domain-modeling`. `grill-with-docs` is a thin wrapper that invokes it, so without it that skill would install broken.
-
-## Original to this repo
-
-`engineering/efficient-fable`.
-
-`productivity/grilling` and `productivity/grill-me` were rewritten from scratch. They
-replace what was vendored, and carry no upstream text: the design-tree/frontier ordering,
-the hypothesis-with-a-confidence-number, the recommendation attached to every question, the
-want-versus-should-want probe and the predict-the-next-three stop test are ideas taken from
-several sources and written fresh, not copied prose.
-
-`engineering/setup-team-conventions` is original prose, but follows the
-explore → present → confirm → write shape of upstream's `setup-matt-pocock-skills`, and
-credits it in a footer. It was rewritten around multi-forge team detection: GitHub,
-Bitbucket, GitLab and Azure DevOps; a tracker detected independently of the forge; and
-branch, commit, verify and review conventions read out of git history and CI rather than
-asked.
-
----
-
-MIT License
-
-Copyright (c) 2026 Matt Pocock
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+The parts that came out of using these day to day: verify a finding before reporting it;
+reproduce with the reporter's exact steps and be willing to say "no bug"; run the probe
+yourself rather than asking someone to open DevTools; declared path ownership so parallel
+writers cannot clobber each other; committed is not deployed; codex is a separate bill, not a
+smarter brain; facts are looked up, never asked for; and evidence with exit codes before any
+claim of done.

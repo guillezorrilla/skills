@@ -1,5 +1,40 @@
 # @guillezorrilla/skills
 
+## 2.0.0
+
+### Major Changes
+
+- Every skill is now original prose. All eight remaining vendored skills were rewritten from
+  scratch, every attribution footer is gone, and `ATTRIBUTION.md` became an influences document
+  rather than a licence-compliance one.
+
+  - **`tdd`** — 51 lines to a full skill. Keeps the seam-agreement rule and the tautological-test
+    anti-pattern, adds learning the stack before writing a test, watching each failure _and_
+    reading it, the prove-it-first cycle for bug fixes, DAMP-over-DRY (a test that needs a helper
+    to understand has hidden what it was proving), real implementations over mocks, and the
+    no-correct-seam case being the finding rather than a shallow test.
+  - **`diagnosing-bugs`** — Phase 0 (reproduce with the reporter's exact steps, be willing to say
+    "no bug") now sits above a build-the-failing-signal phase with eight ways to construct one
+    and explicit done criteria. Adds stop-the-line, error output treated as data rather than
+    instruction, and ranked falsifiable hypotheses before any is tested.
+  - **`implement`** — adds the simplicity ladder, the increment cycle that leaves the tree green
+    each step, feature flags for incomplete work, additive and reversible changes for infra, and
+    a rule against re-running an already-green check as reassurance.
+  - **`codebase-design`** — folds in its two supporting files. Adds choosing a seam by dependency
+    type, replace-don't-layer for testing across a seam, and design-it-twice with genuinely
+    different designs rather than variations.
+  - **`improve-codebase-architecture`** — replaces the CDN-based HTML report, which would render
+    blank under an artifact's content-security policy. Now publishes as an artifact where
+    available with a temp-file fallback, self-contained, theme-aware, Mermaid rendered natively.
+    Adds an explicit not-a-candidate rule for stable low-churn code.
+  - **`domain-modeling`** — folds in its two supporting files. The three tests for whether an ADR
+    earns existence (hard to reverse, surprising without context, a real trade-off), and glossary
+    entries that must say what a term is _not_.
+  - **`handoff`** — the verified / assumed / left-out / blocked split, with committed-but-not-
+    deployed belonging under assumed.
+  - **`grill-with-docs`** — records terms and decisions inline as they land, not reconstructed
+    from memory at the end.
+
 ## 1.6.0
 
 ### Minor Changes

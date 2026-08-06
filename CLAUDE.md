@@ -45,23 +45,24 @@ CI enforces this.
   walks the whole tree. Repo-only guidance is a plain `.md`. CI fails otherwise.
 - Record non-obvious decisions in `.agents/adr/` rather than in commit messages.
 
-## Vendored skills
+## Originality
 
-Most skills here originate from [mattpocock/skills](https://github.com/mattpocock/skills)
-(MIT). Rules for them:
+Every skill here is original prose. Nothing is a copy, and no skill carries an attribution
+footer — the repo started from vendored skills and has been rewritten one at a time.
 
-- Every vendored `SKILL.md` ends with the attribution footer, and has a row in
-  [ATTRIBUTION.md](./ATTRIBUTION.md) saying **how** it was adapted. CI checks the row.
-- Adapt by **adding** sections, not by rewriting upstream prose. That keeps a future
-  upstream diff readable and keeps the credit honest.
-- Adaptations encode **working conventions only** — verification discipline, scope
-  discipline, git etiquette, communication style. Never anything specific to one
-  employer, codebase, stack, or monorepo. These skills must be useful to a stranger.
-- Vendored skills get no `README.md`; upstream owns their documentation.
+Keep it that way:
+
+- **Read sources, take ideas, write your own prose.** Ideas and methods are not what a
+  licence covers; text is. Copying substantial text means the notice travels with it, which
+  is why nothing here does.
+- Record where thinking came from in [ATTRIBUTION.md](./ATTRIBUTION.md). That is an honesty
+  document, not a licence obligation — keep it accurate anyway.
+- Never paste a section from another repo "to adapt later". It never gets rewritten, and the
+  footer it needs never gets added.
 
 **A skill that invokes `/other-skill` needs that skill bundled.** `grill-me` and
-`grill-with-docs` are thin wrappers over `grilling` and `domain-modeling` — vendoring
-them without their engines shipped them dead. CI now fails on a dangling invocation.
+`grill-with-docs` are thin wrappers over `grilling` and `domain-modeling`; shipping them
+without their engines once shipped them dead. CI fails on a dangling invocation.
 
 ## Skill anatomy
 

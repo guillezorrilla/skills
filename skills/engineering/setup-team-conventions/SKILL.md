@@ -84,7 +84,3 @@ Write the files per [OUTPUTS.md](OUTPUTS.md). Record **unknown** as unknown; a c
 Tell the user which skills now read which files, and that `docs/agents/*.md` can be hand-edited later — re-running this skill is only for when the team changes tooling.
 
 Suggest committing it on a branch as a normal PR, so the team sees and agrees to the conventions being recorded on their behalf. Do not commit it yourself.
-
----
-
-From [mattpocock/skills](https://github.com/mattpocock/skills) (MIT, Copyright (c) 2026 Matt Pocock) — this skill follows the explore/present/confirm/write shape of its `setup-matt-pocock-skills`, rewritten for multi-forge team detection. See [ATTRIBUTION.md](../../../ATTRIBUTION.md).

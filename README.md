@@ -4,9 +4,8 @@ Agent skills for engineering and productivity — grill a plan before you build 
 it test-first, debug it systematically, and orchestrate frontier models without burning
 your whole quota.
 
-Most of these come from **[mattpocock/skills](https://github.com/mattpocock/skills)**
-(MIT) and are adapted here; see [ATTRIBUTION.md](./ATTRIBUTION.md) for what changed in
-each one.
+All of these are original — written from scratch, not vendored. Where the thinking came
+from is recorded in [ATTRIBUTION.md](./ATTRIBUTION.md).
 
 **Two ways in, two philosophies.** The Claude Code plugin installs the whole set as a
 managed, read-only bundle that updates when I ship — you subscribe rather than fork.
@@ -127,5 +126,4 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md). Repo conventions live in
 
 ## License
 
-[MIT](./LICENSE). Vendored skills remain MIT, Copyright (c) 2026 Matt Pocock — see
-[ATTRIBUTION.md](./ATTRIBUTION.md).
+[MIT](./LICENSE). Influences are recorded in [ATTRIBUTION.md](./ATTRIBUTION.md).
