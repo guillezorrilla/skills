@@ -61,7 +61,10 @@ jobs:
             if grep -q "mattpocock/skills" "$dir/SKILL.md"; then
               grep -q "$name" ATTRIBUTION.md || { echo "::error::vendored $name missing from ATTRIBUTION.md"; fail=1; }
             else
-              [ -f "$dir/README.md" ] || { echo "::error::own skill $name has no $dir/README.md"; fail=1; }
+              # A thin entry point that just invokes another skill needs no human page.
+              if [ "$(wc -l < "$dir/SKILL.md")" -ge 30 ] && [ ! -f "$dir/README.md" ]; then
+                echo "::error::own skill $name has no $dir/README.md"; fail=1
+              fi
               grep -q "\`$name\`" README.md || { echo "::error::own skill $name missing from README table"; fail=1; }
             fi
           done

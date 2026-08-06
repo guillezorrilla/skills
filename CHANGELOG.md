@@ -1,5 +1,35 @@
 # @guillezorrilla/skills
 
+## 1.5.0
+
+### Minor Changes
+
+- Rewrite `grilling` and `grill-me` from scratch. Both are now original prose carrying no
+  upstream text, and both drop their attribution footers.
+
+  `grilling` grew from 26 lines to a full skill. It keeps the design-tree/frontier idea —
+  only ask decisions whose prerequisites are settled — but resolves that against
+  one-question-at-a-time rather than asking the whole frontier in a batch: a batch gets
+  skimmed, and the third question usually depends on the first, so you save a round trip and
+  buy a wrong framing. The frontier now governs which question is next, not how many.
+
+  New in it: a hypothesis with an honest confidence number stated before the first question,
+  which must name what is missing below ~70%; a recommendation attached to every question, so
+  the user reacts to a concrete wrong answer instead of composing a right one; a probe for
+  "should want" answers ("if you didn't have to justify this to anyone, what would you
+  actually want?"); a rule that facts are looked up and never requested from the user; an
+  instruction to correct your own recommendation out loud when evidence contradicts it; a
+  six-line restate where "out of scope" is mandatory; a table of what does not count as a yes;
+  and a checkable stop test — can you predict the next three answers — with a floor for when
+  you cannot.
+
+  Adopt a skill anatomy for this repo: Overview, When to Use, Process, Common
+  Rationalizations, Red Flags, Verification. The last three are the load-bearing ones — every
+  step an agent would plausibly skip needs a counter-argument beside it or it gets skipped.
+  `SKILL.md` stays under 500 lines, with reference material over ~100 lines split into a
+  supporting file. CI now requires a README page only for skills of 30+ lines, so a thin
+  entry point like `grill-me` is exempt.
+
 ## 1.4.1
 
 ### Patch Changes

@@ -1,27 +1,13 @@
 ---
 name: grill-me
-description: A relentless interview to sharpen a plan or design.
+description: Stress-test a plan, design, or decision before building it — a relentless interview that surfaces every silent assumption.
 disable-model-invocation: true
 ---
 
-Run a `/grilling` session.
+# Grill Me
 
-## How to run it here
+Run the `grilling` skill on whatever I am about to build.
 
-**Explore before you ask.** Anything answerable from the codebase, the git history, the installed tooling, or a `--help` output is not a question — go and find out. Questions are for decisions only I can make.
+I am asking to be interrogated, not consulted. Push back, name what I have not decided, and do not soften a recommendation to be agreeable. If the plan has a hole, the point of this session is that you find it now rather than after the code exists.
 
-**Ground every question in something you checked.** State the fact and where it came from, then ask. A question built on an assumption wastes a turn and, worse, launders the assumption into the plan.
-
-**Recommend an answer.** Every question comes with the option you would pick and why. "What do you think?" hands the work back; a recommendation gives me something to push against.
-
-**One at a time.** Several questions at once is bewildering and I will answer only the last one properly.
-
-**Change your mind out loud.** If evidence you gather contradicts your own earlier recommendation, say so plainly, correct it, and move on — no ceremony, no re-litigating how the mistake happened. A grilling that never revises its premise was theatre.
-
-**Short and blunt.** Three to five lines per point. No preamble, no essays, no restating my answer back to me before continuing.
-
-Stop when the decisions are made, not when you run out of questions.
-
----
-
-From [mattpocock/skills](https://github.com/mattpocock/skills) (MIT, Copyright (c) 2026 Matt Pocock), adapted. See [ATTRIBUTION.md](../../../ATTRIBUTION.md).
+Do not start building anything until I have given you an explicit yes on the restate.

@@ -10,20 +10,25 @@ The MIT notice below travels with them, per the licence.
 | --- | --- |
 | `engineering/codebase-design` | Added placement-is-design and prefer-the-systemic-version sections; subagent fan-out in one message rather than waves |
 | `engineering/diagnosing-bugs` | Added Phase 0 — reproduce with the reporter's exact steps and be willing to conclude "no bug"; run probes yourself rather than asking a human to check a console; committed ≠ deployed; fix only the reported defect |
-| `engineering/grill-with-docs` | Unchanged wrapper; its engine (`grilling`) and `domain-modeling` are vendored so it works standalone |
+| `engineering/grill-with-docs` | Unchanged wrapper; `domain-modeling` is vendored alongside it so it works standalone. Its engine, `grilling`, has since been rewritten from scratch — see below |
 | `engineering/implement` | No longer commits — the human owns commits, pushes and PRs; branch-only, never the default branch; scope discipline; verification-with-evidence before claiming done; additive/fail-safe for infra |
 | `engineering/improve-codebase-architecture` | Added what-counts-as-a-good-candidate (systemic over bolt-on) and an explicit does-not-rewrite-working-systems boundary; fan-out in one message |
 | `engineering/tdd` | Added watch-red-watch-green, report-with-command-output, judge tests by running not type-checking, don't absorb pre-existing failures |
-| `productivity/grill-me` | Added explore-before-asking, ground questions in verified facts, recommend an answer, one at a time, change your mind out loud, short and blunt |
 | `productivity/handoff` | Added the verified / assumed / left-out-on-purpose / blocked split, and that committed-not-deployed belongs under assumed |
 
 ## Vendored as dependencies, unmodified
 
-`productivity/grilling` and `engineering/domain-modeling`. `grill-me` and `grill-with-docs` are thin wrappers that invoke them, so without these two they would install broken.
+`engineering/domain-modeling`. `grill-with-docs` is a thin wrapper that invokes it, so without it that skill would install broken.
 
 ## Original to this repo
 
 `engineering/efficient-fable`.
+
+`productivity/grilling` and `productivity/grill-me` were rewritten from scratch. They
+replace what was vendored, and carry no upstream text: the design-tree/frontier ordering,
+the hypothesis-with-a-confidence-number, the recommendation attached to every question, the
+want-versus-should-want probe and the predict-the-next-three stop test are ideas taken from
+several sources and written fresh, not copied prose.
 
 `engineering/setup-team-conventions` is original prose, but follows the
 explore → present → confirm → write shape of upstream's `setup-matt-pocock-skills`, and

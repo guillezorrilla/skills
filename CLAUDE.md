@@ -63,12 +63,41 @@ Most skills here originate from [mattpocock/skills](https://github.com/mattpococ
 `grill-with-docs` are thin wrappers over `grilling` and `domain-modeling` — vendoring
 them without their engines shipped them dead. CI now fails on a dangling invocation.
 
+## Skill anatomy
+
+Substantive skills follow this shape. It is a pattern, not a rigid template — equivalent
+headings are fine when they read better — but the last three are what make a skill change
+behaviour rather than just describe good practice.
+
+| Section | Holds |
+| --- | --- |
+| Overview | what this does and why it matters, in two or three sentences |
+| When to Use | positive triggers **and** explicit exclusions ("not for …") |
+| The Process | numbered steps. Specific and runnable — "run `npm test`", not "verify the tests" |
+| Common Rationalizations | a table of the excuses an agent uses to skip a step, each with why it is wrong |
+| Red Flags | observable signs the skill is being violated right now |
+| Verification | a checklist of exit criteria, each one backed by evidence |
+
+**Rationalizations and Red Flags are the load-bearing sections.** Every step an agent
+would plausibly skip needs a counter-argument sitting next to it, or it gets skipped.
+Write them from real failures, not imagined ones.
+
+Keep `SKILL.md` under 500 lines — it loads in full once the skill activates. Move
+reference material over ~100 lines into a supporting file beside it and link one level
+deep. Prefer a script over a long inline code block: running a script costs no context,
+an inline block is paid for on every load.
+
+Every section must earn its place. If deleting it would not change what an agent does,
+delete it.
+
 ## Frontmatter
 
 `name` must be kebab-case and match the directory. `description` is the only thing an
-agent sees when deciding whether to load a skill, so write **trigger conditions**
-("Use when …"), not a summary. `npm run check` enforces both plus a 40-char floor, and
-handles plain, quoted, and folded (`>-`) scalar styles.
+agent sees when deciding whether to load a skill: say what it does, then when to use it.
+Write **trigger conditions** ("Use when …"), not a summary of the process — an agent that
+can read the process in the description may follow that summary instead of loading the
+skill. `npm run check` enforces both plus a 40-char floor, and handles plain, quoted, and
+folded (`>-`) scalar styles.
 
 See [.agents/invocation.md](./.agents/invocation.md) for model-invoked vs user-invoked.
 
