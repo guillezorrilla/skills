@@ -1,5 +1,15 @@
 # @guillezorrilla/skills
 
+## 1.3.2
+
+### Patch Changes
+
+- `npm run link` now also links into `~/.codex/skills`, `~/.kiro/skills`, `~/.cursor/skills`,
+  `~/.gemini/skills` and `~/.antigravity/skills` — but only when the directory already
+  exists, so it never invents a config dir for a harness that is not installed. Previously it
+  covered only Claude Code and `.agents`, which meant Codex never had the skills even though
+  `efficient-fable` routes implementation work to it.
+
 ## 1.3.1
 
 ### Patch Changes

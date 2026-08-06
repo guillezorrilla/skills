@@ -8,7 +8,16 @@
 set -euo pipefail
 
 repo="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+
+# .claude and .agents are always linked — the first is Claude Code, the second is the
+# cross-harness standard location. Others are linked only when their directory already
+# exists, so this never invents a config dir for a harness that isn't installed.
 targets=("$HOME/.claude/skills" "$HOME/.agents/skills")
+for optional in "$HOME/.codex/skills" "$HOME/.kiro/skills" "$HOME/.cursor/skills" \
+                "$HOME/.gemini/skills" "$HOME/.antigravity/skills"; do
+  [ -d "$optional" ] && targets+=("$optional")
+done
+
 linked=0
 skipped=0
 
