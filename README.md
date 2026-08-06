@@ -90,7 +90,7 @@ find the exact identifier for a harness.
 
 | Skill | What it does |
 | --- | --- |
-| [`setup-team-conventions`](./skills/engineering/setup-team-conventions/SKILL.md) · [docs](./docs/setup-team-conventions.md) | **Run this first in a team repo.** Detects the forge (GitHub/Bitbucket/GitLab/Azure), the tracker (Jira/Linear/forge issues), branch and commit conventions, the real verify commands and the review rules — from git history and CI, not from documentation — and records them in `docs/agents/` for every other skill to read. |
+| [`setup-team-conventions`](./skills/engineering/setup-team-conventions/SKILL.md) · [readme](./skills/engineering/setup-team-conventions/README.md) | **Run this first in a team repo.** Detects the forge (GitHub/Bitbucket/GitLab/Azure), the tracker (Jira/Linear/forge issues), branch and commit conventions, the real verify commands and the review rules — from git history and CI, not from documentation — and records them in `docs/agents/` for every other skill to read. |
 | [`grill-me`](./skills/productivity/grill-me/SKILL.md) | Relentless interview to sharpen a plan before you build it. One question at a time, each with a recommended answer, each grounded in something already checked. |
 | [`grill-with-docs`](./skills/engineering/grill-with-docs/SKILL.md) | Same interview, writing ADRs and a glossary as decisions land. |
 | [`implement`](./skills/engineering/implement/SKILL.md) | Build from a spec or tickets. Scope discipline, evidence before claiming done, branch-only, and it never commits for you. |
@@ -101,16 +101,18 @@ find the exact identifier for a harness.
 
 | Skill | What it does |
 | --- | --- |
-| [`efficient-fable`](./skills/engineering/efficient-fable/SKILL.md) · [docs](./docs/efficient-fable.md) | Fable plans, briefs, judges and synthesizes without touching files. Detects whether codex is available: if it is, implementation goes there on a separate bill; if not, Opus 5 implements and nothing degrades. Cheap agents gather evidence either way. |
+| [`efficient-fable`](./skills/engineering/efficient-fable/SKILL.md) · [readme](./skills/engineering/efficient-fable/README.md) | Fable plans, briefs, judges and synthesizes without touching files. Detects whether codex is available: if it is, implementation goes there on a separate bill; if not, Opus 5 implements and nothing degrades. Cheap agents gather evidence either way. |
 | [`tdd`](./skills/engineering/tdd/SKILL.md) | Red → green at pre-agreed seams. Watch red, watch green, report the actual command output. |
 | [`diagnosing-bugs`](./skills/engineering/diagnosing-bugs/SKILL.md) | Build a tight feedback loop, then work the phases. Starts by reproducing with the reporter's exact steps — and is willing to conclude there is no bug. |
 | [`codebase-design`](./skills/engineering/codebase-design/SKILL.md) | Shared vocabulary for deep modules: module, interface, depth, seam, adapter, leverage, locality. |
 | [`domain-modeling`](./skills/engineering/domain-modeling/SKILL.md) | Keep the domain glossary and ADRs current as decisions are made. |
 | [`grilling`](./skills/productivity/grilling/SKILL.md) | The interview engine `grill-me` and `grill-with-docs` run on. |
 
-`efficient-fable` needs an `AGENTS.md` in your repo so codex can read your rules — the
-skill checks for one and offers to symlink `AGENTS.md -> CLAUDE.md` when it runs. It
-never creates files behind your back.
+`efficient-fable` runs anywhere skills and subagents exist, including Cowork. It never
+probes your machine on invocation: the codex lane is decided at the first handoff, from the
+tools already available. Only when it is about to hand implementation to codex does it
+check for an `AGENTS.md` — codex reads that and never `CLAUDE.md` — and offer to symlink
+one. It never creates files behind your back.
 
 ## 3. Contributing
 

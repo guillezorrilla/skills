@@ -1,5 +1,46 @@
 # @guillezorrilla/skills
 
+## 1.4.1
+
+### Patch Changes
+
+- Move each own skill's human-facing page from `docs/<skill>.md` to a `README.md` beside its
+  `SKILL.md`, following BuilderIO's convention. Both install routes let someone take a single
+  skill, and a central `docs/` tree does not travel with it — the page was unreachable for
+  exactly the people who most needed it. The `docs/` directory is gone; CI now requires the
+  co-located README instead.
+
+  Add a Mermaid diagram to `efficient-fable`'s README covering the gate, the routing fan-out,
+  the two codex lanes and the evidence-or-reject loop. Mermaid rather than checked-in PNGs, so
+  it renders on GitHub and stays editable in a diff.
+
+## 1.4.0
+
+### Minor Changes
+
+- `efficient-fable` no longer probes the environment on every invocation, and now works in
+  shell-less environments like Cowork.
+
+  The old Step 0 ran `command -v codex && codex login status` at invocation. Three things
+  wrong with that: most invocations never delegate at all, because the gate ends them, so the
+  probe answered a question the session never asked; it shelled out to rediscover something
+  already visible in the tool list, since an installed codex plugin puts `/codex:*` right
+  there; and it assumed a shell exists, so in Cowork the skill's first action failed and it
+  opened by looking broken.
+
+  Now the executor lane is decided at the **first handoff**, read off available tools. A
+  `/codex:*` command means the lane is open. No codex tooling but a shell present means one
+  `codex login status`, once per session, only when implementation is about to be delegated.
+  No shell means the lane is closed silently — no mention of codex, no suggestion to install
+  it, no degraded work. The `AGENTS.md` check moved from an upfront step to the first codex
+  handoff, where it is the only place it matters.
+
+  Verification now takes the strongest evidence the environment can produce rather than
+  assuming a shell: a command and its exit code where commands exist, and a named observable
+  where they do not — "row 42 reads Total: 1,240", not "looks right". Added a documents-and-
+  data scenario, since slices are sections and sheets there rather than files, and two agents
+  writing one document clobber each other exactly like two writing one file.
+
 ## 1.3.2
 
 ### Patch Changes

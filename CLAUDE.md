@@ -17,7 +17,7 @@ Skills are organised into bucket folders under `skills/`:
 | `.agents/adding-a-skill.md` | how to add a skill here — a plain doc, **not** a `SKILL.md` |
 | `.agents/adr/` | decision records — why, not what |
 | `.agents/invocation.md` | model-invoked vs user-invoked |
-| `docs/<skill-name>.md` | human-facing page, own skills only |
+| `skills/<bucket>/<name>/README.md` | human-facing page, own skills only — travels with a standalone install |
 | `.claude-plugin/` | Claude Code plugin + marketplace manifests |
 | `scripts/` | checks and local linking |
 
@@ -57,7 +57,7 @@ Most skills here originate from [mattpocock/skills](https://github.com/mattpococ
 - Adaptations encode **working conventions only** — verification discipline, scope
   discipline, git etiquette, communication style. Never anything specific to one
   employer, codebase, stack, or monorepo. These skills must be useful to a stranger.
-- Vendored skills get no `docs/` page; upstream owns their documentation.
+- Vendored skills get no `README.md`; upstream owns their documentation.
 
 **A skill that invokes `/other-skill` needs that skill bundled.** `grill-me` and
 `grill-with-docs` are thin wrappers over `grilling` and `domain-modeling` — vendoring

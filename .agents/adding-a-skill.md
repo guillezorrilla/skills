@@ -18,7 +18,7 @@ $EDITOR skills/my-skill/SKILL.md
 
 Then, in the same change:
 
-1. `docs/my-skill.md` — human-facing page (see the template below).
+1. `skills/<bucket>/my-skill/README.md` — human-facing page (see the template below). Co-located so it travels when someone installs this skill alone.
 2. A row in the README skills table.
 3. Bump `version` in **both** `package.json` and `.claude-plugin/plugin.json`.
    Subscribers on the plugin route see nothing until the plugin version changes.
@@ -65,7 +65,7 @@ an observable test rather than a promise.
 ## Removing or renaming
 
 Renaming a directory renames the skill; the frontmatter `name` must follow or
-`npm run check` fails. Also update the docs page filename, the README row, and any
+`npm run check` fails. Also update the README row, and any
 prose invocation from another skill. Installed copies do not rename themselves —
 consumers on the `skills add` route keep the old directory until they re-run it, so
 treat a rename as a breaking change and say so in the changelog.

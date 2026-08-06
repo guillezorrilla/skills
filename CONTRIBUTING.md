@@ -17,7 +17,7 @@ A change that adds or alters a skill also needs:
 - a row in its bucket `README.md` **and** the top-level `README.md`
 - an explicit path in `.claude-plugin/plugin.json`'s `skills` array — the plugin cannot
   discover skills, so a missing entry ships the plugin without it
-- `docs/<skill>.md` if the skill is original to this repo; vendored skills instead need
+- `skills/<bucket>/<skill>/README.md` if the skill is original to this repo; vendored skills instead need
   a row in [ATTRIBUTION.md](./ATTRIBUTION.md) saying how they were adapted
 - a changeset (`npm run changeset`) unless the change has no user-visible effect
 

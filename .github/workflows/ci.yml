@@ -61,7 +61,7 @@ jobs:
             if grep -q "mattpocock/skills" "$dir/SKILL.md"; then
               grep -q "$name" ATTRIBUTION.md || { echo "::error::vendored $name missing from ATTRIBUTION.md"; fail=1; }
             else
-              [ -f "docs/$name.md" ] || { echo "::error::own skill $name has no docs/$name.md"; fail=1; }
+              [ -f "$dir/README.md" ] || { echo "::error::own skill $name has no $dir/README.md"; fail=1; }
               grep -q "\`$name\`" README.md || { echo "::error::own skill $name missing from README table"; fail=1; }
             fi
           done
