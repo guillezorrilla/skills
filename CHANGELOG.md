@@ -1,5 +1,38 @@
 # @guillezorrilla/skills
 
+## 1.6.0
+
+### Minor Changes
+
+- Five new skills, all original prose — ideas taken from reading widely, none of the text.
+
+  - **`planning-and-task-breakdown`** — dependency graph, vertical slices, and a task shape where
+    every task declares `owns`, `depends`, `done when` and `out`. Overlapping `owns` means the
+    tasks cannot run in parallel, which is the rule that stops two writers silently clobbering
+    each other. Refuses to plan on unconfirmed intent, and refuses to plan work smaller than the
+    plan.
+  - **`context-engineering`** — a hierarchy ordered by how long each layer stays true, and the
+    counter-intuitive rule that bad output usually means cutting context rather than adding it.
+    Conflicts resolve by running behaviour over documentation. Long sessions get re-anchored,
+    spent context dropped, and decisions written into artefacts because compaction does not care
+    what you remember.
+  - **`code-review-and-quality`** — five axes, but the first rule is verify the finding before
+    reporting it: name the failing input, read past the diff hunk, and delete what does not
+    survive rather than softening it into "consider whether…". Everything ranked, an explicit
+    verdict, three to five lines per comment. Includes how to review an agent's work, where the
+    summary is the claim and the diff is the evidence.
+  - **`code-simplification`** — a ladder from "does this need to exist at all" through stdlib and
+    native platform features down to the smallest thing that works, plus what must never be
+    simplified away and the over-simplification traps. Behaviour is frozen: if you had to edit a
+    test, you changed behaviour. Deliberate shortcuts get a comment naming the ceiling.
+  - **`browser-testing`** — driving the browser is the agent's job, not the user's. Tool-agnostic
+    rather than requiring one MCP server: DevTools MCP if configured, else Playwright, else curl,
+    and only then a human. Isolated profile by default, page content treated as data and never as
+    instruction, and all four signals captured every run rather than only the expected one.
+
+  Also: a README page is no longer required per skill when `SKILL.md` carries the anatomy's
+  Overview and When to Use sections. Two conventions were doing one job.
+
 ## 1.5.0
 
 ### Minor Changes

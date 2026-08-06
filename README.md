@@ -102,6 +102,11 @@ find the exact identifier for a harness.
 | Skill | What it does |
 | --- | --- |
 | [`efficient-fable`](./skills/engineering/efficient-fable/SKILL.md) · [readme](./skills/engineering/efficient-fable/README.md) | Fable plans, briefs, judges and synthesizes without touching files. Detects whether codex is available: if it is, implementation goes there on a separate bill; if not, Opus 5 implements and nothing degrades. Cheap agents gather evidence either way. |
+| [`planning-and-task-breakdown`](./skills/engineering/planning-and-task-breakdown/SKILL.md) | Dependency graph, sliced vertically. Every task declares the paths it owns and the check that fails if it's wrong — so parallel work can't clobber itself. |
+| [`context-engineering`](./skills/engineering/context-engineering/SKILL.md) | Curate what the agent sees and when. Cut before you add — most degradation is irrelevant context crowding out relevant context. |
+| [`code-review-and-quality`](./skills/engineering/code-review-and-quality/SKILL.md) | Five axes, but verify every finding before reporting it. Ranked, with a verdict, three to five lines per comment. |
+| [`code-simplification`](./skills/engineering/code-simplification/SKILL.md) | A ladder from "does this need to exist" down to the smallest thing that works. Behaviour frozen — if you edited a test, you changed behaviour. |
+| [`browser-testing`](./skills/engineering/browser-testing/SKILL.md) | Verify against a real running page. Drive the browser yourself instead of asking someone to open DevTools and report back. |
 | [`tdd`](./skills/engineering/tdd/SKILL.md) | Red → green at pre-agreed seams. Watch red, watch green, report the actual command output. |
 | [`diagnosing-bugs`](./skills/engineering/diagnosing-bugs/SKILL.md) | Build a tight feedback loop, then work the phases. Starts by reproducing with the reporter's exact steps — and is willing to conclude there is no bug. |
 | [`codebase-design`](./skills/engineering/codebase-design/SKILL.md) | Shared vocabulary for deep modules: module, interface, depth, seam, adapter, leverage, locality. |
