@@ -1,0 +1,29 @@
+{
+  "name": "guillezorrilla-skills",
+  "version": "1.3.0",
+  "description": "Agent skills for engineering and productivity — grilling a plan before you build it, TDD, systematic debugging, codebase design, team-convention detection, and frontier-model orchestration.",
+  "author": {
+    "name": "Guillermo Zorrilla",
+    "url": "https://github.com/guillezorrilla"
+  },
+  "homepage": "https://github.com/guillezorrilla/skills",
+  "license": "MIT",
+  "keywords": ["skills", "orchestration", "tdd", "debugging", "grilling", "teams"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Guille's Skills",
+    "shortDescription": "Engineering and productivity skills for teams.",
+    "longDescription": "Grill a plan before building it, build it test-first, debug it with a tight feedback loop, and design deep modules with a shared vocabulary. setup-team-conventions detects how a team actually works — forge, tracker, branch and commit conventions, the real verify commands, review rules — from git history and CI rather than from documentation, and records it for every other skill to read. efficient-fable orchestrates frontier models and uses Codex as a second executor when it is available, falling back to Claude subagents when it is not.",
+    "developerName": "Guillermo Zorrilla",
+    "category": "Productivity",
+    "capabilities": ["Read", "Write"],
+    "websiteURL": "https://github.com/guillezorrilla/skills",
+    "defaultPrompt": [
+      "Run setup-team-conventions once in a shared repo before implementing anything, so branch naming, commit format, verify commands and review rules come from this team rather than from defaults",
+      "Reproduce a reported bug with the reporter's exact steps before diagnosing it, and say \"no bug\" when the behaviour is correct rather than proposing a fix",
+      "Claim done only with the command and its exit code pasted; committed is not deployed",
+      "Fix only what was reported — report unrelated findings instead of absorbing them",
+      "Leave commits, pushes and pull requests to the human unless explicitly asked"
+    ]
+  }
+}

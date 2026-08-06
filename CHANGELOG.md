@@ -1,5 +1,29 @@
 # @guillezorrilla/skills
 
+## 1.3.0
+
+### Minor Changes
+
+- `efficient-fable` now detects its own mode instead of assuming codex is installed.
+
+  `command -v codex && codex login status` picks the lane. With codex present, implementation
+  goes to it on a separate subscription and Claude quota becomes a reserve; without it, Opus 5
+  implements and nothing degrades — the win is still that Fable stops spending frontier tokens
+  reading files. It no longer mentions codex at all in Claude-only mode, and never suggests
+  installing it mid-task. Detection rather than configuration, because a setting goes stale
+  when a token expires or the machine changes while the config keeps claiming the old answer.
+
+  Restructured along the lines of BuilderIO's `efficient-fable` — where-Fable-shines,
+  delegation pattern, handoff packets, vetting, common scenarios, claims — with the research
+  numbers made explicit: the ~5–7K per-round-trip floor and the documented case where the
+  wrapper cost more than the work, the ~93/7 executor/orchestrator split to hold yourself to,
+  Opus 5's +14.6 pts on SWE-bench Pro over gpt-5.6 Sol, and the silent-decay failure mode.
+
+  Add `.codex-plugin/plugin.json` so the set installs as a native Codex plugin as well as via
+  `skills add`. A single `./skills/` path works here because everything under `skills/` ships —
+  there is no unpromoted bucket to exclude. `scripts/sync-plugin-version.mjs` now keeps both
+  plugin manifests in step with `package.json` rather than just the Claude one.
+
 ## 1.2.0
 
 ### Minor Changes

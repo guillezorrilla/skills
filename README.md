@@ -26,7 +26,19 @@ Updates arrive automatically after that. This is not in Claude Code's official
 marketplace, so unlike a first-party plugin the `marketplace add` line is required
 once — after that it behaves the same.
 
-### Codex, and other agents
+### Codex
+
+Either install as a native Codex plugin:
+
+```bash
+codex plugin marketplace add guillezorrilla/skills
+codex plugin add guillezorrilla-skills@guillezorrilla-skills
+```
+
+…or take the universal route below, which also reaches Codex. Same caveat as above —
+pick one, not both.
+
+### Any agent, including Codex, Kiro and Antigravity
 
 ```bash
 npx skills@latest add guillezorrilla/skills
@@ -89,7 +101,7 @@ find the exact identifier for a harness.
 
 | Skill | What it does |
 | --- | --- |
-| [`efficient-fable`](./skills/engineering/efficient-fable/SKILL.md) · [docs](./docs/efficient-fable.md) | Fable 5 plans, briefs, judges and synthesizes without touching files. Cheap Claude agents gather evidence, codex implements on a separate bill, Opus 5 debugs. |
+| [`efficient-fable`](./skills/engineering/efficient-fable/SKILL.md) · [docs](./docs/efficient-fable.md) | Fable plans, briefs, judges and synthesizes without touching files. Detects whether codex is available: if it is, implementation goes there on a separate bill; if not, Opus 5 implements and nothing degrades. Cheap agents gather evidence either way. |
 | [`tdd`](./skills/engineering/tdd/SKILL.md) | Red → green at pre-agreed seams. Watch red, watch green, report the actual command output. |
 | [`diagnosing-bugs`](./skills/engineering/diagnosing-bugs/SKILL.md) | Build a tight feedback loop, then work the phases. Starts by reproducing with the reporter's exact steps — and is willing to conclude there is no bug. |
 | [`codebase-design`](./skills/engineering/codebase-design/SKILL.md) | Shared vocabulary for deep modules: module, interface, depth, seam, adapter, leverage, locality. |

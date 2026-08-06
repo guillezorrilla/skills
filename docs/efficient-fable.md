@@ -3,20 +3,31 @@
 ## What it does
 
 Turns Fable 5 into an orchestrator that never touches files. It decomposes the work,
-writes self-contained briefs, judges what comes back, and synthesizes — while the
-actual reading and typing happens elsewhere:
+writes self-contained briefs, judges what comes back, and synthesizes — while the actual
+reading and typing happens elsewhere.
 
-| Work | Goes to | Bill |
+It runs in **two modes**, chosen by detection, not configuration:
+
+```bash
+command -v codex && codex login status
+```
+
+| Work | Dual-vendor mode | Claude-only mode |
 | --- | --- | --- |
-| grep, read, summarize, reduce logs | Haiku 4.5 | Claude, trivial |
-| diffs the brief already specifies | Sonnet 5 | Claude, cheap |
-| default implementation | codex Sol (xhigh) | **ChatGPT** |
-| debugging, the one hard call | Opus 5 | Claude, the reserve |
-| plan, brief, judge, synthesize | Fable 5 | under 10% of tokens |
+| grep, read, summarize, reduce logs | Haiku | Haiku |
+| diffs the brief already specifies | Sonnet | Sonnet |
+| **default implementation** | **codex Sol (xhigh)** — ChatGPT bill | **Opus 5** |
+| debugging, the one hard call | Opus 5 | Opus 5 |
+| plan, brief, judge, synthesize | Fable | Fable |
 
-The point is that codex runs on a **different subscription**, so implementation stops
-consuming Claude quota. Codex is not smarter than Opus 5 — it is separately billed.
-See [ADR 0002](../.agents/adr/0002-codex-is-a-separate-bill-not-a-better-model.md).
+In dual-vendor mode, codex runs on a **different subscription**, so implementation stops
+consuming Claude quota entirely. Codex is not smarter than Opus 5 — Opus 5 leads it by
++14.6 pts on SWE-bench Pro and wins debugging outright — it is separately *billed*. See
+[ADR 0002](../.agents/adr/0002-codex-is-a-separate-bill-not-a-better-model.md).
+
+Without codex, the skill does not degrade the work; it just loses that lane. Opus 5
+implements, and the orchestration still pays for itself because the expensive model stops
+reading files. It will not nag you to install codex.
 
 ## When to reach for it
 
@@ -47,9 +58,15 @@ fresh install (and pods, on mobile) — too much for the conflict it prevents.
 for one and offers to symlink it. It never writes one for you — LLM-authored
 `AGENTS.md` files measurably lower success (~3%) and raise cost (20%+).
 
-**Does it work without a codex subscription?** Partly. Evidence gathering, mechanical
-edits, and Opus 5 escalation all still work; you just lose the separate-bill lane,
-which is most of the savings.
+**Does it work without a codex subscription?** Yes — that is Claude-only mode, detected
+automatically. Evidence gathering, mechanical edits and Opus 5 implementation all work
+normally. You lose the separate-bill lane, so the saving is smaller: the win is that Fable
+stops spending frontier tokens on file reading, not that the work moves off your bill.
+
+**Why detect instead of a setting?** Because a setting goes stale. You install codex, or
+your token expires, or you switch machines — and a config file keeps claiming the old
+answer while the routing quietly breaks. `codex login status` is true at the moment it
+matters.
 
 ## It's working if
 
