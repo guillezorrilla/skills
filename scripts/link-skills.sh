@@ -14,6 +14,16 @@ skipped=0
 
 for target in "${targets[@]}"; do
   mkdir -p "$target"
+
+  # Prune links this repo owns whose target is gone — a renamed or removed skill
+  # otherwise leaves a dangling symlink the harness still tries to load.
+  for old in "$target"/*; do
+    [ -L "$old" ] || continue
+    case "$(readlink "$old")" in "$repo"/*) ;; *) continue ;; esac
+    [ -e "$old" ] && continue
+    rm "$old"
+    echo "  prune $old (target gone)"
+  done
   for src in "$repo"/skills/*/*/; do
     [ -d "$src" ] || continue
     name="$(basename "$src")"

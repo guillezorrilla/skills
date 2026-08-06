@@ -1,5 +1,14 @@
 # @guillezorrilla/skills
 
+## 1.3.1
+
+### Patch Changes
+
+- `npm run link` now prunes dangling symlinks it owns. Renaming or removing a skill used to
+  leave a symlink pointing at nothing, which the harness still tries to load. Pruning is
+  scoped to links whose target is inside this repo — a dangling link from some other source
+  is left alone, since it is not ours to delete.
+
 ## 1.3.0
 
 ### Minor Changes
