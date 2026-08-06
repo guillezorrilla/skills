@@ -81,7 +81,7 @@ in Claude at **Settings → Capabilities → Skills**. On a Team or Enterprise p
 can upload once in **Organization settings → Skills** and the whole team gets them
 automatically.
 
-Eight skills ship this way: all five go-to-market skills, plus `grilling`, `handoff`, and
+Five skills ship this way: both go-to-market skills, plus `grilling`, `handoff`, and
 `efficient-fable`, which comes fully alive in Cowork because Cowork has sub-agents and a
 sandbox to run commands in. The rest need a git repository or a shell on your own machine,
 so uploading those would install something that never fires.
@@ -94,7 +94,7 @@ so uploading those would install something that never fires.
 | | Claude Code plugin | `npx skills add` | Claude app upload |
 | --- | --- | --- | --- |
 | Scope | user-level, all projects | your choice, prompted | your account, or the whole org |
-| Which skills | the whole bundle | you pick | the eight that need no terminal |
+| Which skills | the whole bundle | you pick | the five that need no terminal |
 | Which agents | Claude Code only | any, you pick | claude.ai and Claude Desktop |
 | Editable | no, managed, read-only | yes, files land in your tree | no |
 | Updates | automatic | `skills update` | re-upload the zip |
@@ -129,17 +129,15 @@ so uploading those would install something that never fires.
 | [`domain-modeling`](./skills/engineering/domain-modeling/SKILL.md) | Keep the domain glossary and ADRs current as decisions are made. |
 | [`grilling`](./skills/productivity/grilling/SKILL.md) | The interview engine `grill-me` and `grill-with-docs` run on. |
 
-**Go to market**: sales, customer success and marketing work, none of it needing a
-terminal. One rule runs through all four: every fact that reaches a prospect or a customer
-carries a source and a date, or it does not get sent.
+**Go to market**, sales work that needs no terminal. One rule runs through both: every fact
+that reaches a prospect carries a source and a date, or it does not get sent. Invented
+familiarity is how AI-written outreach fails, and the reader is the one person who can check
+the claim instantly.
 
 | Skill | What it does |
 | --- | --- |
-| [`setup-gtm-workflow`](./skills/go-to-market/setup-gtm-workflow/SKILL.md) | **Run this first with a team.** Detects the CRM, sequencer, notes tool and support desk that are actually connected, asks only what it cannot detect, and records their real pipeline stages, suppression rules, approvals, regions and ICP into one profile the other four read. Records; never redesigns their process. |
 | [`icp-lead-generation`](./skills/go-to-market/icp-lead-generation/SKILL.md) | Finds target accounts against the profile the team already trusts. Filters written so they can come back false, a citation on every row, and the rejects kept, because that is the only evidence the profile itself is wrong. |
-| [`account-enrichment`](./skills/go-to-market/account-enrichment/SKILL.md) | A one-page dossier aimed at one decision: is there a reason to write to them now. Checks the CRM, the inbox and the call notes before the open web, and labels every line verified, internal, inferred or unknown. |
 | [`cold-outreach`](./skills/go-to-market/cold-outreach/SKILL.md) | A first touch built on one dated fact, with one small ask, a graceful way to say no, and a compliance floor. Refuses to invent the familiarity that gets AI-written email deleted. |
-| [`proactive-customer-outreach`](./skills/go-to-market/proactive-customer-outreach/SKILL.md) | Check-ins, milestone notes and win-backs in the team's own voice, taken from messages that actually got replies. Blocks the cheerful note when an escalation is open. |
 
 `efficient-fable` runs anywhere skills and subagents exist, including Cowork. It never
 probes your machine on invocation: the codex lane is decided at the first handoff, from the

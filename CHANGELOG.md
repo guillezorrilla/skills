@@ -1,5 +1,35 @@
 # @guillezorrilla/skills
 
+## 1.10.0
+
+### Minor Changes
+
+- Keep the two go-to-market skills that earned it, remove the three that did not.
+
+  `icp-lead-generation` and `cold-outreach` stay. `setup-gtm-workflow`, `account-enrichment` and
+  `proactive-customer-outreach` are gone, one release after arriving.
+
+  The reason is the test rather than taste. Each skill was run against a control on the same
+  task, with the control forbidden from using skills, and with traps planted in the input: an
+  unsourced rumour, a stale undated fact, an unverified opinion about the prospect's own
+  product, an open severity-1 ticket next to a milestone worth celebrating.
+
+  `cold-outreach` was the clear keeper. Both control runs shipped no sender identity and no
+  working opt-out, which is a legal floor in several of the places these messages get sent, and
+  both skilled runs included them. `icp-lead-generation` produced target lists whose rows carry a
+  source and a date, keeps the rejects, and refused an unfalsifiable half of the profile it was
+  handed instead of quietly scoring it.
+
+  The other three did not clear that bar. `account-enrichment` and
+  `proactive-customer-outreach` matched their controls rather than beating them, so they were
+  format discipline rather than a reason to install anything. `setup-gtm-workflow` was never
+  tested at all, because testing it needs connected CRM and notes tools.
+
+  What the removed setup skill was for has not been dropped. Both surviving skills now establish
+  what they need from whatever the team already has, reading a connected CRM or an existing
+  process doc first and asking only for what cannot be found, rather than pointing at a separate
+  profile that has to be built first.
+
 ## 1.9.0
 
 ### Minor Changes

@@ -1,13 +1,10 @@
 {
   "$comment": "Skills that work in the Claude apps — no terminal, no repo, no subagents. Presence here means 'packs into a .zip for Customize > Skills'; absence means it needs a coding harness. The description is the app's, capped at 200 chars by the upload, and must read as a trigger because the apps have no slash commands: it is the only thing that makes the skill fire.",
   "skills": {
-    "account-enrichment": "Researches a company or contact before you write to them, checking the CRM, emails and call notes before the web, with a source and date on every claim. Use before a first touch, call or renewal.",
     "cold-outreach": "Writes a first email or LinkedIn message built on one real, dated fact about the account, with one small ask and nothing invented. Use for cold emails, connection notes or a follow-up sequence.",
     "efficient-fable": "Splits large work into slices, hands each to a subagent with a precise brief, and judges what comes back against evidence rather than prose. Use when asked to delegate, fan out, or parallelise work.",
     "grilling": "Stress-tests a plan, pitch, or decision by interviewing one question at a time until nothing is silently assumed. Use when asked to grill me, poke holes in this, stress-test this, or are we sure?",
     "handoff": "Writes up an unfinished piece of work so someone else can continue it, separating what was checked from what was only assumed. Use when handing work over, or when a session ends unfinished.",
-    "icp-lead-generation": "Finds new target accounts matching an ideal customer profile and proves each one fits, with a source per row and the rejects kept. Use when someone wants leads, prospects or target accounts.",
-    "proactive-customer-outreach": "Drafts customer check-ins, milestone notes and win-back messages in your team’s own voice, from real account data, and stops if an escalation is open. Use when a customer needs a nudge.",
-    "setup-gtm-workflow": "Records how a team already works, their CRM, pipeline stages, sequencer, suppression rules and ICP, into one profile the other go-to-market skills read. Run once per team before using them."
+    "icp-lead-generation": "Finds new target accounts matching an ideal customer profile and proves each one fits, with a source per row and the rejects kept. Use when someone wants leads, prospects or target accounts."
   }
 }

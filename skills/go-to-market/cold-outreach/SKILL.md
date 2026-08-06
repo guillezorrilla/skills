@@ -25,9 +25,11 @@ So the rule that governs this skill: every factual claim about them traces to a 
 
 ## Work inside the team's setup
 
-A `gtm-workflow` profile, if the team has one, tells you where sends happen, which suppression list to check, who has to approve a message before it goes out, and which countries their recipients sit in, which decides the rules that apply. Read it before drafting. `setup-gtm-workflow` writes it.
+Four things change what you write, and none of them are guessable: where sends actually happen, which suppression list to check, who has to approve a message before it goes out, and which countries the recipients sit in, since that decides the rules that apply.
 
-Without a profile, ask which of those apply in one short message rather than guessing, because the cost of guessing here lands on the whole team's deliverability. Draft into the format the team already sends from. Do not propose a new tool.
+Establish them from what the team already has. Read their CRM if it is connected, read whatever doc holds their process, and ask for the rest in one short message. Do not guess any of the four, because the cost of guessing here lands on the whole team's deliverability rather than on this one message.
+
+Then draft into the format the team already sends from, and do not propose a new tool.
 
 ## The gate
 

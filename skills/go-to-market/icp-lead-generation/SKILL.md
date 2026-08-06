@@ -40,9 +40,11 @@ Derive an ICP from evidence only when they say they do not have one. In that cas
 
 ## Work inside the team's setup
 
-Look for a `gtm-workflow` profile first, in the team's docs tool or in the project instructions. It holds their ICP in their own words, which data provider they license, where suppression lives and who owns which account. Using it saves asking for things they have already written down, and `setup-gtm-workflow` is the skill that produces it.
+Before asking anything, look at what the team already has. If they keep a profile, a brief, or an ICP doc in whatever they use for documents, read it. If their CRM is connected, read the stage names and the suppression list out of it rather than asking. Asking is the expensive channel, and asking for something they have already written down is how a tool gets abandoned.
 
-With no profile, work with whatever is connected, and say which of these you could not check. Never introduce a tool the team does not already use.
+Three things decide whether the list is usable, so establish them one way or the other: which list or field holds their suppressions, how account ownership gets checked, and whether they license a data provider whose export should be the input here. Where you cannot establish one, say so in the output rather than guessing.
+
+Never introduce a tool the team does not already use.
 
 ## Where the data may come from
 

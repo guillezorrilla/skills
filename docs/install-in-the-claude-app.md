@@ -1,10 +1,9 @@
 # Install in the Claude app: no terminal
 
-Some of these skills are not about code at all. Five of them are sales, customer success
-and marketing work: finding accounts that fit, researching them properly, writing a first
-touch that does not invent things, and keeping in touch with customers without sounding
-like a template. Two more, `grilling` and `handoff`, are useful to anyone. Nobody should
-need a command line to get them.
+Some of these skills are not about code at all. Two of them are sales work: finding accounts
+that fit your profile and provably do, and writing a first message that does not invent
+things. Two more, `grilling` and `handoff`, are useful to anyone. Nobody should need a
+command line to get them.
 
 In the Claude apps, [claude.ai](https://claude.ai) and Claude Desktop, a skill installs
 by uploading a file. Two routes: an admin does it once for everyone, or each person does
@@ -50,37 +49,28 @@ matches it:
 | `handoff` | "Write this up so Ana can take it over." · "Summarise where we got to." | A short document split four ways: what was actually checked, what was only assumed, what was deliberately left out, and what is blocked. The assumed section is the one that saves the next person hours. |
 | `efficient-fable` | "Split this across agents." · "Work through all forty of these in parallel." | Cuts the work into slices that cannot tread on each other, briefs one agent per slice, and then checks the results against something observable instead of taking "done" on trust. **Needs Cowork**, see below. |
 
-### The go-to-market five
-
-Install `setup-gtm-workflow` first and run it once. It looks at whatever you have connected,
-your CRM, your inbox, your call notes, your support desk, asks only what it cannot find on
-its own, and writes down how your team already works: your real pipeline stage names, who
-owns which account, where your suppression list lives, who has to approve a send. The other
-four read that, so they fit your process instead of inventing their own.
+### The go-to-market skills
 
 | Skill | Say something like | What happens |
 | --- | --- | --- |
-| `setup-gtm-workflow` | "Set these up for my team." | One short conversation, then a profile saved where you choose. Records how you work; never tells you to change it. |
 | `icp-lead-generation` | "Find me 20 accounts like Northwind." · "I need new leads." | Turns your profile into filters that can come back false, then proves each account fits with a source and a date. Keeps the rejects, which is the only way to tell whether the profile itself is off. |
-| `account-enrichment` | "What's going on at Acme?" · "Who should I talk to there?" | A one-page brief for one decision: is there a reason to write to them now. Checks your CRM, inbox and call notes before the web, and marks every line verified, internal, inferred or unknown. |
 | `cold-outreach` | "Write the first email to this account." | One dated fact as the opener, one small ask, a graceful way to say no, and your real identity with a working opt-out. Refuses to write "congrats on the round" when nothing sourced says there was one. |
-| `proactive-customer-outreach` | "Nudge Sam about onboarding." · "Write a check-in for this account." | Learns your voice from the messages of yours that actually got replies, uses real numbers with dates, and will not send a cheerful milestone note while that customer has an open escalation. |
 
-They all work alone, and they chain in that order.
+Both work alone, and `icp-lead-generation` feeds `cold-outreach` when you want the whole path from a target list to a first message.
 
 The interview in `grilling` is meant to push back. If it asks you what you'd want if you
 didn't have to justify it to anyone, that is the skill working, not going off-script.
 
-## What is not here: and why
+## What is not here, and why
 
-The rest of the set, `tdd`, `diagnosing-bugs`, `code-review-and-quality`.
+The rest of the set, `tdd`, `diagnosing-bugs`, `code-review-and-quality`,
 `setup-team-conventions` and the others, needs to run commands, read a git repository, or
 dispatch other agents. The apps deliberately give a chat none of that, so those skills
 would upload cleanly and then do nothing. They live in the coding tools instead; see the
 [README](../README.md).
 
 `efficient-fable` is the one with a condition attached. Its whole job is handing bounded
-work to other agents and judging what comes back, so it needs agents to hand work to.
+work to other agents and judging what comes back, so it needs agents to hand work to,
 which means **Cowork**, where Claude coordinates parallel sub-agents and can run commands
 in its own sandbox. Install it and it works there.
 
@@ -89,7 +79,7 @@ the work itself. That is the skill behaving correctly, not failing.
 
 ## Keeping up to date
 
-Uploaded skills are a copy, not a subscription, a new release does not reach them. When
+Uploaded skills are a copy, not a subscription. A new release does not reach them. When
 one ships, download the `.zip` again and re-upload it the same way; it replaces the old
 version. An admin doing this once in Organization settings updates everyone at the same
 time, which is the main practical argument for Route A.
