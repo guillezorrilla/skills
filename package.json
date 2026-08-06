@@ -1,11 +1,25 @@
 {
   "name": "@guillezorrilla/skills",
-  "version": "0.0.0",
+  "version": "1.1.0",
   "private": true,
   "type": "module",
-  "description": "Agent skills for frontier-model orchestration.",
+  "description": "Agent skills for engineering and productivity — grilling, TDD, systematic debugging, codebase design, frontier-model orchestration.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/guillezorrilla/skills"
+  },
   "license": "MIT",
   "scripts": {
-    "check": "node scripts/check-skills.mjs"
-  }
+    "changeset": "changeset",
+    "version": "changeset version && node scripts/sync-plugin-version.mjs",
+    "check": "node scripts/check-skills.mjs",
+    "check:plugin": "claude plugin validate . --strict",
+    "check:version": "node scripts/sync-plugin-version.mjs --check",
+    "link": "bash scripts/link-skills.sh"
+  },
+  "devDependencies": {
+    "@changesets/changelog-github": "^0.7.0",
+    "@changesets/cli": "^2.30.0"
+  },
+  "packageManager": "npm@10.9.4"
 }

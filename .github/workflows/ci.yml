@@ -1,0 +1,73 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Validate skill frontmatter
+        run: npm run check
+
+      - name: Validate plugin manifests
+        run: npx -y @anthropic-ai/claude-code@latest plugin validate . --strict
+
+      - name: Assert plugin version tracks package version
+        run: npm run check:version
+
+      - name: Assert every skill ships in the plugin
+        run: |
+          fail=0
+          for dir in skills/*/*/; do
+            p="./${dir%/}"
+            node -e "
+              const s = require('./.claude-plugin/plugin.json').skills;
+              if (!s.includes(process.argv[1])) {
+                console.error('::error::$p missing from .claude-plugin/plugin.json skills array');
+                process.exit(1);
+              }
+            " "$p" || fail=1
+          done
+          exit $fail
+
+      - name: Assert own skills are documented, vendored ones attributed
+        run: |
+          fail=0
+          for dir in skills/*/*/; do
+            name=$(basename "$dir")
+            if grep -q "mattpocock/skills" "$dir/SKILL.md"; then
+              grep -q "$name" ATTRIBUTION.md || { echo "::error::vendored $name missing from ATTRIBUTION.md"; fail=1; }
+            else
+              [ -f "docs/$name.md" ] || { echo "::error::own skill $name has no docs/$name.md"; fail=1; }
+              grep -q "\`$name\`" README.md || { echo "::error::own skill $name missing from README table"; fail=1; }
+            fi
+          done
+          exit $fail
+
+      # A skill that invokes `/other-skill` is broken on install if that skill
+      # isn't bundled — this is how grill-me shipped dead the first time.
+      - name: Assert no skill invokes a skill that is not bundled
+        run: |
+          fail=0
+          # Harness built-ins and filesystem paths, not skills.
+          allow=" model effort plugin plugins reload-plugins hooks clear compact tmp "
+          present=" $(find skills -name SKILL.md | xargs -n1 dirname | xargs -n1 basename | sort -u | tr '\n' ' ') "
+          for r in $(grep -rhoE '`/[a-z][a-z0-9-]+`' skills --include=SKILL.md | tr -d '`/' | sort -u); do
+            case "$present$allow" in
+              *" $r "*) ;;
+              *) echo "::error::a skill invokes /$r, which is not bundled"; fail=1 ;;
+            esac
+          done
+          exit $fail

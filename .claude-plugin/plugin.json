@@ -1,7 +1,8 @@
 {
   "name": "guillezorrilla-skills",
+  "version": "1.1.0",
   "displayName": "Guille's Skills",
-  "description": "Agent skills for frontier-model orchestration — Fable 5 plans and judges while cheaper Claude agents gather evidence and codex implements on a separate bill.",
+  "description": "Agent skills for engineering and productivity — frontier-model orchestration, TDD, systematic debugging, codebase design, grilling a plan before you build it.",
   "author": {
     "name": "Guillermo Zorrilla",
     "url": "https://github.com/guillezorrilla"
@@ -9,6 +10,18 @@
   "homepage": "https://github.com/guillezorrilla/skills",
   "repository": "https://github.com/guillezorrilla/skills",
   "license": "MIT",
-  "keywords": ["skills", "orchestration", "codex", "subagents", "agent-workflows"],
-  "skills": "./skills/"
+  "keywords": ["skills", "orchestration", "codex", "tdd", "debugging", "subagents"],
+  "skills": [
+    "./skills/engineering/codebase-design",
+    "./skills/engineering/diagnosing-bugs",
+    "./skills/engineering/domain-modeling",
+    "./skills/engineering/efficient-fable",
+    "./skills/engineering/grill-with-docs",
+    "./skills/engineering/implement",
+    "./skills/engineering/improve-codebase-architecture",
+    "./skills/engineering/tdd",
+    "./skills/productivity/grill-me",
+    "./skills/productivity/grilling",
+    "./skills/productivity/handoff"
+  ]
 }
