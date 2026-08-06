@@ -29,11 +29,10 @@ see an update by comparing that plugin version — an unbumped change reaches no
 
 ## Originality
 
-Every skill here is original prose — no copies, no attribution footers. Read sources, take
-the ideas, write your own words. Ideas and methods are not what a licence covers; text is.
+Every skill here is original prose. Read widely, take the ideas, write your own words —
+ideas and methods are free to reuse, wording is not.
 
-Never paste a section from elsewhere "to adapt later" — it never gets rewritten. Record where
-thinking came from in [ATTRIBUTION.md](./ATTRIBUTION.md).
+Never paste a section from elsewhere "to adapt later" — it never gets rewritten.
 
 Adaptations encode working conventions only — verification discipline, scope discipline, git
 etiquette, communication style. Nothing tied to one employer, codebase, stack, or monorepo.

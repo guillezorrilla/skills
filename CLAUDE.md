@@ -47,16 +47,10 @@ CI enforces this.
 
 ## Originality
 
-Every skill here is original prose. Nothing is a copy, and no skill carries an attribution
-footer — the repo started from vendored skills and has been rewritten one at a time.
+Every skill here is original prose. Keep it that way:
 
-Keep it that way:
-
-- **Read sources, take ideas, write your own prose.** Ideas and methods are not what a
-  licence covers; text is. Copying substantial text means the notice travels with it, which
-  is why nothing here does.
-- Record where thinking came from in [ATTRIBUTION.md](./ATTRIBUTION.md). That is an honesty
-  document, not a licence obligation — keep it accurate anyway.
+- **Read widely, take ideas, write your own prose.** Ideas and methods are free to reuse;
+  text is not. Never copy someone's wording.
 - Never paste a section from another repo "to adapt later". It never gets rewritten, and the
   footer it needs never gets added.
 

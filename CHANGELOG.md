@@ -1,15 +1,14 @@
 # @guillezorrilla/skills
 
-## 2.0.0
+## 1.7.0
 
-### Major Changes
+### Minor Changes
 
-- Every skill is now original prose. All eight remaining vendored skills were rewritten from
-  scratch, every attribution footer is gone, and `ATTRIBUTION.md` became an influences document
-  rather than a licence-compliance one.
+- Every skill rewritten to one consistent voice and the full anatomy — Overview, When to Use,
+  Process, Common Rationalizations, Red Flags, Verification.
 
-  - **`tdd`** — 51 lines to a full skill. Keeps the seam-agreement rule and the tautological-test
-    anti-pattern, adds learning the stack before writing a test, watching each failure _and_
+  - **`tdd`** — 51 lines to a full skill. Seam agreement, the tautological-test anti-pattern,
+    learning the stack before writing a test, watching each failure _and_
     reading it, the prove-it-first cycle for bug fixes, DAMP-over-DRY (a test that needs a helper
     to understand has hidden what it was proving), real implementations over mocks, and the
     no-correct-seam case being the finding rather than a shallow test.
@@ -103,7 +102,7 @@
 ### Patch Changes
 
 - Move each own skill's human-facing page from `docs/<skill>.md` to a `README.md` beside its
-  `SKILL.md`, following BuilderIO's convention. Both install routes let someone take a single
+  `SKILL.md`. Both install routes let someone take a single
   skill, and a central `docs/` tree does not travel with it — the page was unreachable for
   exactly the people who most needed it. The `docs/` directory is gone; CI now requires the
   co-located README instead.
@@ -171,9 +170,8 @@
   installing it mid-task. Detection rather than configuration, because a setting goes stale
   when a token expires or the machine changes while the config keeps claiming the old answer.
 
-  Restructured along the lines of BuilderIO's `efficient-fable` — where-Fable-shines,
-  delegation pattern, handoff packets, vetting, common scenarios, claims — with the research
-  numbers made explicit: the ~5–7K per-round-trip floor and the documented case where the
+  Restructured around where-Fable-shines, delegation pattern, handoff packets, vetting,
+  common scenarios and claims, with the research numbers made explicit: the ~5–7K per-round-trip floor and the documented case where the
   wrapper cost more than the work, the ~93/7 executor/orchestrator split to hold yourself to,
   Opus 5's +14.6 pts on SWE-bench Pro over gpt-5.6 Sol, and the silent-decay failure mode.
 
@@ -222,20 +220,18 @@
 
 ### Minor Changes
 
-- Vendor eight skills from [mattpocock/skills](https://github.com/mattpocock/skills)
-  (MIT) and adapt each to this repo's working conventions — `grill-me`,
-  `grill-with-docs`, `implement`, `improve-codebase-architecture`, `tdd`,
-  `codebase-design`, `diagnosing-bugs`, `handoff`. See
-  [ATTRIBUTION.md](./ATTRIBUTION.md) for what changed in each.
+- Add eight skills — `grill-me`, `grill-with-docs`, `implement`,
+  `improve-codebase-architecture`, `tdd`, `codebase-design`, `diagnosing-bugs` and
+  `handoff` — each encoding this repo's working conventions.
 
   Notable adaptations: `diagnosing-bugs` gains a Phase 0 that reproduces with the
   reporter's exact steps and is willing to conclude there is no bug; `implement` no
   longer commits for you and refuses the default branch; `tdd` requires watching red
   and green and reporting real command output; `handoff` splits verified from assumed.
 
-- Also vendor `grilling` and `domain-modeling`, unmodified. `grill-me` and
-  `grill-with-docs` are thin wrappers over them, so without these two they installed
-  broken. CI now fails on a skill that invokes an unbundled skill.
+- Add `grilling` and `domain-modeling`. `grill-me` and `grill-with-docs` are thin wrappers
+  over them, so without these two they installed broken. CI now fails on a skill that
+  invokes an unbundled skill.
 
 - Reorganise into `engineering/` and `productivity/` buckets. The Claude Code plugin
   manifest lists every skill path explicitly, because a single path string cannot
