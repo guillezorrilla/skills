@@ -70,15 +70,35 @@ npx skills@latest add guillezorrilla/skills --global --agent codex,kiro-cli,anti
 Passing an unknown agent name prints the full valid list, which is the quickest way to
 find the exact identifier for a harness.
 
+### No terminal — the Claude app
+
+Some of these are not about code. Grilling a plan until nothing is assumed, and writing
+work up so someone else can continue it, are as useful in sales, support and marketing as
+in engineering — and neither should require a command line.
+
+Download the `.zip` files from the [latest release](../../releases/latest) and upload them
+in Claude at **Settings → Capabilities → Skills**. On a Team or Enterprise plan an admin
+can upload once in **Organization settings → Skills** and the whole team gets them
+automatically.
+
+Three skills ship this way — `grilling`, `handoff`, and `efficient-fable`, which comes
+fully alive in Cowork because Cowork has sub-agents and a sandbox to run commands in. The
+rest need a git repository or a shell on your own machine; uploading those would install
+something that never fires.
+
+**Full walkthrough, written for people who do not use a terminal:**
+[docs/install-in-the-claude-app.md](./docs/install-in-the-claude-app.md).
+
 ### Which route?
 
-| | Claude Code plugin | `npx skills add` |
-| --- | --- | --- |
-| Scope | user-level, all projects | your choice, prompted |
-| Which skills | the whole bundle | you pick |
-| Which agents | Claude Code only | any, you pick |
-| Editable | no — managed, read-only | yes — files land in your tree |
-| Updates | automatic | `skills update` |
+| | Claude Code plugin | `npx skills add` | Claude app upload |
+| --- | --- | --- | --- |
+| Scope | user-level, all projects | your choice, prompted | your account, or the whole org |
+| Which skills | the whole bundle | you pick | the three that need no terminal |
+| Which agents | Claude Code only | any, you pick | claude.ai and Claude Desktop |
+| Editable | no — managed, read-only | yes — files land in your tree | no |
+| Updates | automatic | `skills update` | re-upload the zip |
+| Needs a terminal | to install | yes | never |
 
 ## 2. The skills
 

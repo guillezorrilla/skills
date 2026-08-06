@@ -19,13 +19,31 @@ Skills are organised into bucket folders under `skills/`:
 | `.agents/invocation.md` | model-invoked vs user-invoked |
 | `skills/<bucket>/<name>/README.md` | human-facing page, own skills only — travels with a standalone install |
 | `.claude-plugin/` | Claude Code plugin + marketplace manifests |
-| `scripts/` | checks and local linking |
+| `scripts/app-pack.json` | which skills reach the Claude apps, and their app descriptions |
+| `scripts/` | checks, packing, and local linking |
 
 The `skills` CLI discovers skills by walking the tree, so it needs no manifest. The
 Claude Code plugin does not — `.claude-plugin/plugin.json` lists every skill path
 **explicitly** as an array, because a single path string cannot express two bucket
 folders. **A new skill must be added to that array or the plugin ships without it.**
 CI enforces this.
+
+## The Claude app surface
+
+claude.ai and Claude Desktop install a skill by **uploading a zip**, which makes them a
+third surface with its own rules: the zip's root must be the skill folder, `description` is
+capped at **200 chars**, and there are no slash commands — so `disable-model-invocation`
+would ship a skill that never fires, and telling the model to run a sibling skill points at
+nothing.
+
+`scripts/app-pack.json` is the allow-list: an entry means "works with no terminal", and
+carries the short app description. `npm run pack` writes `dist/claude-app/*.zip`, rewriting
+the frontmatter rather than copying it; `npm run check:app` validates without writing. Only
+add a skill there if it needs no shell, no repository, and nothing installed — and prefer
+adapting the source over forking a second copy per surface.
+
+Cowork is the exception worth remembering: it *does* have sub-agents and a sandboxed shell,
+so orchestration skills work there. What it does not have is the user's own machine.
 
 ## Rules
 

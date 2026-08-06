@@ -24,10 +24,13 @@ Reading one known file yourself is cheaper than briefing an agent to read it. Ap
 Decide the lane **at the first handoff, not at invocation** — and read it off what you already have rather than probing for it.
 
 - **A codex tool or `/codex:*` command is in your available tools** → the codex lane is open. Prefer `/codex:rescue`; it runs in the background with `/codex:status` and `/codex:result`, so Fable is not blocked burning tokens while codex works.
-- **No codex tooling, but you have a shell and are about to hand off implementation** → one `codex login status` settles it. Run it **once**, remember the answer for the rest of the session, and never run it again. Not logged in, not installed, non-zero exit: the lane is closed.
-- **No shell** (Cowork, and any sandboxed or hosted surface) → the lane is closed. Do not mention codex, do not suggest installing it, do not degrade the work.
+- **No codex tooling, but you have a shell on the user's own machine and are about to hand off implementation** → one `codex login status` settles it. Run it **once**, remember the answer for the rest of the session, and never run it again. Not logged in, not installed, non-zero exit: the lane is closed.
+- **A hosted sandbox — Cowork, or any cloud session** → there is a shell and there are subagents, but the VM is not the user's machine and codex is not authenticated on it. The lane is closed without probing. Everything else works unchanged: slices, `owns`, exit codes, diffs. Do not mention codex, do not suggest installing it, do not degrade the work.
+- **Neither subagents nor a shell** (a plain chat) → there is nobody to delegate to. Say so in one clause, then do the work inline and well. Do not narrate an orchestration you cannot perform.
 
 State the lane once, in a clause, when it first matters. Never open with a diagnostic.
+
+The surface decides how much of this skill applies, and it is the one thing worth being explicit about: with executors, the gate and the routing table run; without them, this collapses to "brief precisely, demand observable evidence" — still worth having, but it is one sentence, not a workflow.
 
 ## Where Fable shines
 
@@ -113,7 +116,7 @@ Soft defaults, not rules:
 - **Research** — cheap agents scan docs, prior art, APIs and surfaces in parallel; Fable decides what evidence changes the plan.
 - **Coding** — bounded slices out; integration and final review kept in. Shared-target coordination never delegates.
 - **Testing** — Fable picks the validation direction; a cheap agent runs the targeted checks and reduces the output, reporting the exact commands, the failures, and whether a failure looks flaky, environmental, or real.
-- **Debugging** — cheap agents cluster logs and reproduce; the diagnosis goes to Opus 5 either way, because that is its clearest win. Run `/diagnosing-bugs` for the loop discipline.
+- **Debugging** — cheap agents cluster logs and reproduce; the diagnosis goes to Opus 5 either way, because that is its clearest win. The diagnosing-bugs skill carries the loop discipline, where it is installed.
 - **Documents and data** — the same shape with different units: slices are sections, sheets, or folders rather than files; `owns` is the section or tab; verification is the artifact opened and inspected. A cheap agent drafts or transforms one section, Fable keeps voice, structure and argument coherent across them. Two agents writing one document is the same clobbering problem as two writing one file.
 
 If a task is small, or the validation needs delicate judgment, keep it with Fable.

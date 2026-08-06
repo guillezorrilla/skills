@@ -70,7 +70,7 @@ The risk is a polite user agreeing to be agreeable. Counter it by being visibly 
 
 Facts are your job. Decisions are the user's.
 
-If a frontier question needs something from the environment — what the code does, which dependency is installed, what the CI config runs, what the last release contained — go and find out. Read the file, run the command, dispatch a subagent. Do not ask the user to look it up and report back.
+If a frontier question needs something you could establish yourself — what the code does, which dependency is installed, what a document already says, what last quarter's numbers were — go and find out. Use whatever this environment gives you: read the file, run the command, dispatch a subagent, search, open the connected tool. Do not ask the user to look it up and report back.
 
 Do not block on it either. An in-flight lookup is an unsettled prerequisite: only the questions downstream of it wait. Ask the rest of the frontier meanwhile.
 

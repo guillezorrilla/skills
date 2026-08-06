@@ -31,6 +31,7 @@ jobs:
       # bumps package.json, regenerates CHANGELOG.md, syncs plugin.json's version,
       # and tags — which is what makes plugin subscribers see the update.
       - name: Create version pull request
+        id: changesets
         uses: changesets/action@v1
         with:
           version: npm run version
@@ -39,3 +40,16 @@ jobs:
           title: "chore: version skills"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Anyone installing through the Claude apps installs by uploading a file, so
+      # the zips have to live somewhere a non-engineer can click. Release assets
+      # are that somewhere — see docs/install-in-the-claude-app.md.
+      - name: Attach the Claude app pack to the release
+        if: steps.changesets.outputs.published == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          npm run pack
+          tag="v$(node -p "require('./package.json').version")"
+          gh release create "$tag" dist/claude-app/*.zip --title "$tag" --generate-notes \
+            || gh release upload "$tag" dist/claude-app/*.zip --clobber

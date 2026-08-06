@@ -33,6 +33,26 @@ jobs:
           fi
           echo "none"
 
+      # The Claude apps install by file upload, and their rules differ: a 200-char
+      # description cap, no slash commands, and a zip whose root is the skill
+      # folder rather than a bare SKILL.md. Build the zips and check all three.
+      - name: Build and validate the Claude app pack
+        run: |
+          npm run pack
+          fail=0
+          for zip in dist/claude-app/*.zip; do
+            name=$(basename "$zip" .zip)
+            if ! unzip -l "$zip" | grep -q " $name/SKILL.md$"; then
+              echo "::error::$zip must contain $name/SKILL.md at its root"
+              fail=1
+            fi
+            if unzip -p "$zip" "$name/SKILL.md" | sed -n '1,10p' | grep -q "disable-model-invocation"; then
+              echo "::error::$zip keeps disable-model-invocation — it could never fire in the apps"
+              fail=1
+            fi
+          done
+          exit $fail
+
       - name: Validate plugin manifests
         run: npx -y @anthropic-ai/claude-code@latest plugin validate . --strict
 

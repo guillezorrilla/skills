@@ -1,6 +1,6 @@
 {
   "name": "@guillezorrilla/skills",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "private": true,
   "type": "module",
   "description": "Agent skills for engineering and productivity — grilling, TDD, systematic debugging, codebase design, frontier-model orchestration.",
@@ -15,6 +15,8 @@
     "check": "node scripts/check-skills.mjs",
     "check:plugin": "claude plugin validate . --strict",
     "check:version": "node scripts/sync-plugin-version.mjs --check",
+    "check:app": "node scripts/pack-app-skills.mjs --check",
+    "pack": "node scripts/pack-app-skills.mjs",
     "link": "bash scripts/link-skills.sh"
   },
   "devDependencies": {

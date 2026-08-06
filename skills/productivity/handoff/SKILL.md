@@ -26,11 +26,15 @@ So the document's job is not to summarise the conversation. It is to separate wh
 
 The OS temp directory, not the workspace — a handoff is scaffolding, not a deliverable, and it should not appear in someone's diff. If the user wants it to persist for a multi-session project, they will say so; then put it where the project keeps docs.
 
+Where there is no filesystem to write to, produce it as a downloadable file if you can make one, and otherwise in the reply itself. Either way the four sections below are the point; the file is just the container.
+
 If arguments were passed, treat them as what the next session will focus on and tailor the document to that. A handoff for "finish the migration" and one for "review what I did" contain different things.
 
 ## The four sections
 
 **Verified** — with the command and its result. `pnpm test → 41 passed`. `curl … → 200`. `nx build core → exit 0`. Facts with evidence attached, so the next reader does not re-run them out of doubt.
+
+Where there are no commands to run, name the observable you actually checked: "row 42 of the export reads *Total: 1,240*", not "the numbers look right". Same standard, different evidence.
 
 **Assumed** — believed, never checked. This is the section that saves the next session hours, and the one most often omitted because writing it feels like admitting weakness. It is the opposite: an unlabelled assumption is the failure mode.
 
@@ -82,7 +86,7 @@ End with a **suggested skills** line — which skills the next session should re
 
 ## Verification
 
-- [ ] Verified items each carry the command and its result
+- [ ] Verified items each carry the command and its result, or the observable actually checked
 - [ ] Assumed items are explicitly labelled as unverified
 - [ ] Anything committed-but-not-deployed sits under assumed, not verified
 - [ ] Scope deliberately dropped is listed, with the reason

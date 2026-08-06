@@ -1,6 +1,6 @@
 {
   "name": "guillezorrilla-skills",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "displayName": "Guille's Skills",
   "description": "Agent skills for engineering and productivity \u2014 frontier-model orchestration, TDD, systematic debugging, codebase design, grilling a plan before you build it.",
   "author": {

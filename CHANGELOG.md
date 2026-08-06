@@ -1,5 +1,36 @@
 # @guillezorrilla/skills
 
+## 1.8.0
+
+### Minor Changes
+
+- Install without a terminal, in the Claude apps.
+
+  `grilling`, `handoff` and `efficient-fable` now ship as uploadable `.zip` files on every
+  release, so teammates who do not use a command line — sales, support, marketing — can add
+  them at **Settings → Capabilities → Skills**, and an admin on a Team or Enterprise plan can
+  upload once in **Organization settings → Skills** for everyone at once. Walkthrough in
+  [docs/install-in-the-claude-app.md](./docs/install-in-the-claude-app.md).
+
+  The apps are a genuinely different surface, so the pack is built rather than copied:
+  `npm run pack` rewrites each skill's frontmatter for a 200-char description cap, strips
+  Claude Code-only keys — `disable-model-invocation` would upload cleanly and then never fire,
+  because the apps have no slash commands — and refuses to ship a skill that reaches for a
+  sibling it cannot reach there.
+
+  Three skills were adapted so they work on more than one surface:
+
+  - `efficient-fable` no longer treats Cowork as a dead end. Cowork has sub-agents and a
+    sandboxed shell, so slices, `owns`, exit codes and diffs all work there; only the codex
+    lane is closed, and it is closed without probing, because the VM is not your machine.
+    With no executors at all it now says so in a clause and does the work inline instead of
+    narrating an orchestration it cannot perform.
+  - `handoff` produces a downloadable file, or the reply itself, where there is no filesystem
+    to write to — and accepts a named observable as evidence where there are no commands to
+    run.
+  - `grilling` finds facts with whatever the environment offers: a file, a command, a
+    subagent, a search, a connected tool.
+
 ## 1.7.0
 
 ### Minor Changes

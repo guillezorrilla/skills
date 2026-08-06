@@ -1,0 +1,8 @@
+{
+  "$comment": "Skills that work in the Claude apps — no terminal, no repo, no subagents. Presence here means 'packs into a .zip for Customize > Skills'; absence means it needs a coding harness. The description is the app's, capped at 200 chars by the upload, and must read as a trigger because the apps have no slash commands: it is the only thing that makes the skill fire.",
+  "skills": {
+    "efficient-fable": "Splits large work into slices, hands each to a subagent with a precise brief, and judges what comes back against evidence rather than prose. Use when asked to delegate, fan out, or parallelise work.",
+    "grilling": "Stress-tests a plan, pitch, or decision by interviewing one question at a time until nothing is silently assumed. Use when asked to grill me, poke holes in this, stress-test this, or are we sure?",
+    "handoff": "Writes up an unfinished piece of work so someone else can continue it, separating what was checked from what was only assumed. Use when handing work over, or when a session ends unfinished."
+  }
+}
