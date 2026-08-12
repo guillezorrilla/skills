@@ -1,0 +1,26 @@
+name: Bug in the tooling
+description: Installer, checks, packaging, plugin manifests or CI
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+    validations: { required: true }
+  - type: textarea
+    id: repro
+    attributes:
+      label: How to reproduce
+      placeholder: |
+        1. npm run …
+        2. …
+    validations: { required: true }
+  - type: textarea
+    id: output
+    attributes:
+      label: Output
+      render: shell
+  - type: input
+    id: env
+    attributes:
+      label: Node version and OS
