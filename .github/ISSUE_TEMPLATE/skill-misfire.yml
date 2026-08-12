@@ -1,0 +1,36 @@
+name: A skill fires when it shouldn't, or doesn't when it should
+description: Wrong trigger, over-triggering, or a skill that never loads
+labels: ["skill quality"]
+body:
+  - type: input
+    id: skill
+    attributes:
+      label: Which skill
+      placeholder: engineering/systematic-debugging
+    validations: { required: true }
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What went wrong
+      options:
+        - It never fired when it should have
+        - It fired when it shouldn't have
+        - It fired but the guidance was wrong or unclear
+    validations: { required: true }
+  - type: textarea
+    id: prompt
+    attributes:
+      label: What you asked the agent
+      description: The actual wording matters — a skill fires on the description's trigger conditions, so the phrasing is the evidence.
+      render: text
+    validations: { required: true }
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected instead
+    validations: { required: true }
+  - type: input
+    id: harness
+    attributes:
+      label: Where
+      placeholder: Claude Code 2.1.x / Codex / the Claude app

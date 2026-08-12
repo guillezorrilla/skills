@@ -1,0 +1,30 @@
+name: Propose a new skill
+description: A capability none of the current skills cover
+labels: ["new skill", "needs-decision"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem
+      description: What the agent does badly today, and what it costs you.
+    validations: { required: true }
+  - type: textarea
+    id: trigger
+    attributes:
+      label: When should it fire?
+      description: |
+        Write it as trigger conditions — "Use when …" — not as a summary. This is
+        the hardest part of a skill and the usual reason one never fires, so it is
+        worth arguing about before any prose gets written.
+    validations: { required: true }
+  - type: textarea
+    id: existing
+    attributes:
+      label: Why an existing skill doesn't cover it
+      description: Which ones you considered, and where they fall short. A near-duplicate that over-triggers makes both skills worse.
+    validations: { required: true }
+  - type: dropdown
+    id: bucket
+    attributes:
+      label: Bucket
+      options: [engineering, productivity, go-to-market, not sure]
